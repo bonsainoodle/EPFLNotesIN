@@ -1,14 +1,21 @@
-# EPFL notes from an IN student
+# EPFL notes from an(other) IN student
 
-## Download
-You can find my latest notes (if I updated them) in the [Releases section](https://github.com/JoachimFavre/EPFLNotesIN/releases). If you want to have a single lesson (because I forgot to update the full document, for example), do not hesitate to pull this repository and compile the lecture using *PdfLaTeX* for the BA1 and BA2, and *LuaLaTeX* for the others.
+## Motivation
 
-## Remarks
-I made those documents for my own use, but I thought that typed notes might be of interest to others. So, I shared it (with you, if you are reading this!); since it did not cost me anything. I just ask you to keep in mind that there are mistakes, it is impossible not to make any. If you find some, please feel free to share them with me (grammatical and vocabulary errors are of course also welcome). You can contact me at my EPFL e-mail address.
+This project follows on from Joachim Favre's work on taking notes of EPFL courses in the IN section.
 
-Please note that those contents do not belong to me. I have made some structural changes, reworded some parts, and added some personal notes; but the wording and explanations come mainly from the Professors, and from the books on which they based their course.
+To understand the meaning and ambition of this project, I invite you to read the README of his repository: https://github.com/JoachimFavre/EPFLNotesIN/
 
-I think it is worth mentioning that in order to get these notes typed up, I took my notes in LaTeX during the course, and then made some corrections. I do not think typing handwritten notes is doable in terms of the amount of work. To take notes in LaTeX, I took my inspiration from [a blog post written by Gilles Castle](https://castel.dev/post/lecture-notes-1/). If you want more details, feel free to contact me.
+Since I'm convinced that you can only progress if you know all the tools at your disposal, I think it's crucial to know your course. That's why I've decided to take Joachim's notes and shorten them to keep only the essentials (in my opinion). These documents are not intended to replace courses (and therefore Joachim's notes), as they are free of any demonstrations, examples and remarks. They are to be considered as a revision aid and a summary of what you should ideally know. Joachim's notes are an exceptional work that go far beyond simple note-taking and contain many personal remarks that deal with intuitions about concepts or more rigorous ways of getting to certain results. For these reasons, I strongly advise you to read his notes entirely before reading these.
 
-## Note
-Note that I have done some weird things with this GitHub repository forcing me to do a *git push --force* using a new Git repository with only the latest changes (I, for example, had done some things stopping git from doing version control on my .pdf files, but it did not work well). This may lead to some bug on this GitHub repository. Anyhow, I want to thank Alberts Reisons and Vlad Dancau who made push requests with small modifications to my BA1 notes; the *git push --force* removed their name.
+## Disclaimer
+
+This project is the result of students' work and does not claim to be perfect, nor to replace courses. It is possible that some errors have slipped into the notes or that programs have changed. If you find any, please report them by opening an issue on the repository.
+
+## Progress
+
+So far, only the BA1 courses have been shortened.
+
+## How to contribute
+
+If you want to contribute to this project, you can do so by opening a pull request or contact me on Telegram (@bonsainoodle).

@@ -1,0 +1,103 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-11-01 at 13:13:15.
+
+\usepackage{../../style}
+
+\title{Algèbre}
+\author{Joachim Favre}
+\date{Lundi 01 novembre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{12}{2021-11-01}{Basique, simple. Parce que vous êtes trop cons.}{
+}
+
+\parag{Familles}{
+    Une famille de vecteurs $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ de $V$ engendrent toujours un sous espace
+    \[H = \vect\left\{\bvec{v}_1, \ldots, \bvec{v}_p\right\}\]
+
+    Si la famille est libre, c'est une base de $H$. Si la famille est liée, on peut retirer des vecteurs pour rendre la famille libre.
+}
+
+\parag{Théorème de la base extraite}{
+    Soit $F = \left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ une famille de vecteurs de $V$ et $H = \vect\left\{\bvec{v}_1, \ldots, \bvec{v}_p\right\}$.
+    \begin{enumerate}
+        \item Si l'un des vecteurs de $F$ (disons $\bvec{v}_k$) est une combinaison linéaire des autres vecteurs de $F$, alors la famille obtenue en supprimant dans $F$ le vecteur $\bvec{v}_k$ engendre toujours $H$.
+        \item Si $H \neq \left\{\bvec{0}\right\}$, alors il existe une sous-famille de $F$ qui est une base de $H$. Autrement dit, on peut extraire de la famille $F$ une base de $H$.
+    \end{enumerate}
+}
+
+\parag{Bases du kernel et de l'image}{
+    Soit $A \in \mathbb{R}^{m \times n}$ une matrice donnée.
+
+    On a déjà trouvé une façon de déterminer une base du noyau de $A$. En effet, on peut mettre $A$ sous forme échelonnée réduite pour trouver l'ensemble solution de $A \bvec{x} = \bvec{0}$ en forme paramétrique. Les vecteurs obtenus engendrent le noyau et ils sont linéairement indépendants, donc ils forment une base.
+
+    On voudrait faire la même chose pour trouver une base de l'image de $A$. On sait que les colonnes de $A$ génèrent l'image de $A$, cependant ils ne sont pas nécessairement linéairement indépendants. On peut par contre utiliser le théorème de la base extraite pour extraire une base.
+}
+
+\parag{Théorème}{
+    Les colonnes pivots d'une matrice forment une base de son image.
+
+    \subparag{Remarque}{
+        L'échelonnement permet d'identifier les colonnes pivots, mais ce sont bien les colonnes de $A$ qui engendre $\im A$. Les colonnes d'une forme échelonnée de $A$ pourraient engendrer un tout autre espace.
+    }
+}
+
+\subsection{Système de coordonnées}
+\parag{Théorème de représentation d'un vecteur}{
+    Soit $\mathcal{B} = \left(\bvec{b}_1, \ldots, \bvec{b}_n\right)$ une base d'une space vectoriel $V$. Alors, pour tout vecteur $\bvec{x}$ de $V$, il existe une famille \textit{unique} $\left(c_1, \ldots, c_n\right)$ de scalaires tels que:
+    \[\bvec{x} = c_1 \bvec{b}_1 + \ldots + c_n \bvec{b}_n\]
+}
+
+\parag{Notation}{
+    Soit $\mathcal{B} = \left(\bvec{b}_1, \ldots, \bvec{b}_n\right)$ une base de $V$ (l'ordre des vecteurs n'est pas important, mais une fois qu'on l'a choisit on ne doit plus le changer).
+
+    Pour chaque $\bvec{x}$ dans $V$, il existe un unique choix de $c_1, \ldots, c_n \in \mathbb{R}$ tels que
+    \[\bvec{x} = c_1 \bvec{b}_1 + \ldots + c_n \bvec{b}_n\]
+
+    Ces $c_i$ sont les \important{composantes} ou \important{coordonnées} de $\bvec{x}$ dans la base $\mathcal{B}$.
+
+    Le \important{vecteur de coordonnées} (visible ci-après) identifie $\bvec{x}$ de façon unique (dans la base $\mathcal{B}$) : on peut trouver l'un à partir de l'autre. On écrit:
+    \[\left[\bvec{x}\right]_{\mathcal{B}} = \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix} \in \mathbb{R}^{n}\]
+
+    De plus, $\bvec{x} \mapsto \left[\bvec{x}\right]_{\mathcal{B}}$ est \important{l'application coordonnées} définie par $B$, de $V$ vers $\mathbb{R}^{n}$.
+}
+
+\parag{Exemple 1}{
+    Soit $\mathcal{E} = \left(\bvec{e}_1, \bvec{e}_2\right)$ la base canonique de $\mathbb{R}^2$. Soit le vecteur suivant:
+    \[\bvec{x} = \begin{bmatrix} 5 \\ 3 \end{bmatrix} \in \mathbb{R}^2\]
+
+    On se rend compte que:
+    \[\bvec{x} = 5\bvec{e}_1 + 3\bvec{e}_2 \implies \left[\bvec{x}\right]_{\mathcal{E}} = \begin{bmatrix} 5 \\ 3 \end{bmatrix} = \bvec{x}\]
+
+    C'est pour cela que nous appelons notre base, la base canonique. Cette propriété est très spéciale, et elle n'est vraie que pour cette base. De manière générale, il ne faut pas confondre $\bvec{x}$ et son vecteur de coordonnées. En effet, les coordonnées de $\bvec{x}$ dépendent de la base choisie.
+}
+
+\parag{Généralisation}{
+    Plus généralement, soit $\mathcal{B} = \left(\bvec{b}_1, \ldots, \bvec{b}_n\right)$ une base de $\mathbb{R}^{n}$. On définit la matrice de passage, ou \important{matrice de changement de base}, $P$:
+    \[P_{\mathcal{B}} = \begin{bmatrix}  &  &  \\ \bvec{b}_1 & \ldots & \bvec{b}_n \\  &  &  \end{bmatrix} \in \mathbb{R}^{n\times n}\]
+
+    Alors, la relation suivante:
+    \[\bvec{x} = c_1 \bvec{b}_1 + \ldots c_n \bvec{b}_n \text{ où } \left[\bvec{x}\right]_{\mathcal{B}} = \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}\]
+    s'écrit aussi:
+    \[\bvec{x} = P_{\mathcal{B}} \left[\bvec{x}\right]_{\mathcal{B}}\]
+
+    C'est donc bien une matrice de changement de base, puisqu'elle transforme un vecteur de la base $\mathcal{B}$ en un vecteur de la base canonique.
+
+    De plus, on sait que $P_{\mathcal{B}}$ est inversible (puisque ses colonnes représentent une base), on a donc:
+    \[\left[\bvec{x}\right]_{\mathcal{B}} = P_{\mathcal{B}}^{-1} \bvec{x}\]
+
+    On voit que $P_{\mathcal{B}}^{-1}$ est la matrice de \important{l'application coordonnées} (qu'on avait définie plus haut). Cette application est donc linéaire (car c'est le produit d'une matrice et du vecteur donné en paramètre) et bijective (puisque la matrice est inversible).
+}
+
+\parag{Théorème}{
+    Soit $\mathcal{B}$ une base d'un espace vectoriel $V$. L'application coordonnées $\bvec{x} \mapsto \left[\bvec{x}\right]_{\mathcal{B}}$ est une application linéaire bijective de $V$ dans $\mathbb{R}^{n}$ ($n$ est le nombre de vecteurs de la base, plus tard on l'appellera la dimension de l'espace vectoriel).
+
+    \subparag{Remarque}{
+        Une application linéaire bijective est un \important{isomorphisme} d'espaces vectoriels.
+    }
+}
+
+\end{document}

@@ -1,0 +1,140 @@
+\documentclass{article}
+
+% Expanded on 2021-09-26 at 22:53:05.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Lundi 27 septembre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{2}{2021-09-27}{Matrices échelonnées et vecteurs}{
+}
+
+\subsection{Matrice échelonnée (réduite)}
+
+\parag{Définition de coefficient principal}{
+    Pour une matrice de taille $m \times n$, on appelle \important{coefficient principal} d'une ligne non-nulle le coefficient non-nul le plus à gauche dans la ligne. Dans le cas ou la ligne est complètement nulle, alors il n'y a pas de coefficient principal.
+}
+
+\parag{Définition de forme échelonnée}{
+    Une matrice est sous \important{forme échelonnée} (``aussi triangulaire que possible'') si
+    \begin{enumerate}
+        \item Toutes les lignes nulles (s'il y en a) sous tout en bas.
+        \item Le coefficient principal d'une ligne se trouve à droite du coefficient principal sur la line au dessus d'elle (les coefficients principals ``descendent en escalier'', en général, toutes les ``marches'' ne font pas la même longueur).
+        \item Tous les coefficients d'une colonne sous un coefficient principal sont nuls.
+    \end{enumerate}
+
+}
+
+\parag{Définition de forme échelonnée réduite}{
+    Une matrice sous formée échelonnée qui satisfait en plus les deux conditions ci-dessous est sous \important{forme échelonnée réduite}  (``aussi diagonale que possible et avec des 1 sur la diagonale'')
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Le coefficient principal de chaque ligne non nul vaut $1$.
+        \item Les coefficients principaux sont les seuls éléments non-nuls de leur colonne.
+    \end{enumerate}
+
+}
+
+\parag{Définition d'équivalence par les lignes}{
+    Deux matrices sont \important{équivalentes par les lignes} si on peut obtenir l'une à partir de l'autre via une séquence d'opérations élémentaires sur les lignes.
+
+    \subparag{Théorème}{
+        Toute matrice est équivalente par les lignes à exactement une matrice échelonnée réduite.
+    }
+
+}
+
+\parag{Définition de position de pivot}{
+    Une matrice $A$ a une (unique) forme échelonnée réduite ; les emplacements de ses coefficients principaux sont les \important{positions de pivot} de $A$.
+}
+
+\parag{Définition de colonne pivot}{
+    Une colonne de $A$ qui contient une position de pivot est une \important{colonne pivot}.
+}
+
+\parag{Observation}{
+    Toutes les formes échelonnées de $A$ ont leur coefficient au même endroit.
+    Cette observation ets utile dans le cas où un cherche juste à trouver les positions de pivot.
+}
+
+\parag{Solutions à partir de la forme échelonnée réduite}{
+    Toutes les variables qui correspondent à une colonne pivot apparaissent dans exactement une équation, avec le coefficient 1. On appelle ces variables les \important{variables de bases} ou \important{variables liées}.
+
+    Les autres variables sont \important{les variables libres} : on peut leur donner n'importe quelle valeur, et il est alors facile de choisir les valeurs des variables liée pour obtenir une des solutions du système.
+}
+
+\parag{Résumé pour résoudre un système}{
+    La méthode qu'on utilise s'appelle le \important{pivot de Gauss}:
+    \begin{enumerate}
+        \item Écrire la matrice augmentée du système.
+        \item Appliquer la méthode du pivot (en utilisant les opérations élémentaires sur les lignes) pour obtenir une matrice complète équivalente sous forme échelonnée. Déterminer si le système est compatible (regarder s'il y a des équations qui disent que $1 = 0$). S'il n'y a pas de solution c'est terminé ; sinon aller à l'étape suivante.
+        \item Continuer la méthode du pivot pour obtenir la forme échelonnée réduite.
+        \item Repasser sur le système d'équations correspondant à la matrice obtenue.
+        \item Réécrire chaque équation non nulle, de manière à exprimer les variables liées en fonctions des variables libres.
+    \end{enumerate}
+
+}
+
+\subsection{Équations vectorielles}
+\subsubsection{Définition et opérations}
+
+\parag{Définition de vecteur}{
+    $\mathbb{R}^n$ désigne l'ensemble des matrices de taille $n \times 1$; des matrices sous la forme:
+    \[\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \]
+
+    On appelle un élément de $\mathbb{R}^n$, un \important{vecteur de $\mathbb{R}^n$}.
+
+    Les coefficients du vecteur s'appellent aussi ses composantes.
+}
+
+\parag{Opérations sur les vecteurs}{
+    Soient $\bvec{u}$ et $\bvec{v}$ deux vecteurs de $\mathbb{R}^n$, on écrit $\bvec{u}, \bvec{v} \in \mathbb{R}^n$ et on désigne leur composantes par
+    \[\bvec{u} = \begin{bmatrix} u_1 \\ \vdots \\ u_n \end{bmatrix} \text{ et } \bvec{v} = \begin{bmatrix} v_1 \\ \vdots \\ v_n \end{bmatrix} \]
+
+    La somme de $\bvec{u}$ et $\bvec{v}$ est
+    \[\bvec{u} + \bvec{v} = \begin{bmatrix} u_1 \\ \vdots \\ u_n \end{bmatrix} + \begin{bmatrix} v_1 \\ \vdots \\ v_n \end{bmatrix} = \begin{bmatrix} u_1 + v_1 \\ \vdots \\ u_n + v_n \end{bmatrix} \]
+
+}
+
+\parag{Définition du produit par un scalaire}{
+    Le produit de $\bvec{u}$ par un scalaire $c \in \mathbb{R}$ est
+    \[c \bvec{u} = c\cdot \begin{bmatrix} u_1 \\ \vdots \\ u_n \end{bmatrix} = \begin{bmatrix} cu_1 \\ \vdots \\ cu_n \end{bmatrix}  \]
+}
+
+\parag{Définition de la colinéarité}{
+    On dit que deux vecteurs $\bvec{u}$ et $\bvec{v}$ sont \important{colinéaires} s'il existe $c \in \mathbb{R}$ tel que $\bvec{u} = c \bvec{v}$
+}
+
+\parag{Définition de la soustraction}{
+    La soustraction de $\bvec{u}$ et $\bvec{v}$ est
+    \[\bvec{u} - \bvec{v} = \begin{bmatrix} u_1 - v_1 \\ \vdots \\ u_n - v_n \end{bmatrix} \]
+
+    On remarque que
+    \[\bvec{u} - \bvec{v} = \bvec{u} + \left(-1\right) \bvec{v}\]
+}
+
+\parag{Propriétés algébriques de $\mathbb{R}^n$}{
+    Pour tout $\bvec{u}, \bvec{v}, \bvec{w} \in \mathbb{R}^n$ et tout $a,b \in\mathbb{R}$:
+    \begin{itemize}
+        \item $\bvec{u} + \bvec{v} = \bvec{v} + \bvec{u}$
+        \item $\left(\bvec{u} + \bvec{v}\right) + \bvec{w} = \bvec{u} + \left(\bvec{v} + \bvec{w}\right)$
+        \item $\bvec{u} + \bvec{0} = \bvec{0} + \bvec{u} = \bvec{u}$
+        \item $\bvec{u} + \left(-\bvec{u}\right) = -\bvec{u} + \bvec{u} = \bvec{0}$, où $-\bvec{u}$ désigne $\left(-1\right) \bvec{u}$
+        \item $a\left(\bvec{u} + \bvec{v}\right) = a \bvec{u} + a \bvec{v}$
+        \item $\left(a + b\right)\bvec{u} = a \bvec{u} + b \bvec{u}$
+        \item $a\left(b \bvec{u}\right) = \left(ab\right) \bvec{u}$
+        \item $1 \bvec{u} = \bvec{u}$
+    \end{itemize}
+}
+
+\subsubsection{Combinaisons linéaires}
+\parag{Définition de combinaison linéaire}{
+    Étant donnés $p$ vecteurs $\bvec{v_1}, \ldots, \bvec{v_p} \in \mathbb{R}^n$ et $p$ scalaires $c_1, \ldots, c_p \in \mathbb{R}$, on appelle $\bvec{y} = c_1 \bvec{v_1} + \ldots + c_p \bvec{v_p}$ une \important{combinaison linéaire} de $\bvec{v_1}, \ldots, \bvec{v_p}$ avec les coefficients ou poids $c_1, \ldots, c_p$.
+}
+
+\end{document}

@@ -1,0 +1,133 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-10-11 at 13:11:48.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Lundi 11 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{6}{2021-10-11}{Fin des applications, et produit matriciel}{
+}
+
+\subsection{Injectivité et surjectivité d'applications}
+
+\parag{Définition de surjectivité}{
+    On dit qu'une application $T: \mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ est \important{surjective} si tout vecteur de $\mathbb{R}^{m}$ est l'image \emph{d'au moins un} vecteur de $\mathbb{R}^{n}$.
+}
+
+\parag{Définition d'injectivité}{
+    On dit qu'une application $T: \mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ est \important{injective} si tout vecteur de $\mathbb{R}^{m}$ est l'image \emph{d'au plus un} vecteur de $\mathbb{R}^{n}$. En d'autres mots, $T\left(\bvec{x}\right) = \bvec{b}$ a au plus une solution pour tout $\bvec{b}$.
+}
+
+\parag{Théorème}{
+    Soit $T: \mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ une application linéaire. $T$ est injective si et seulement si l'équation
+    \[T\left(\bvec{x}\right) = \bvec{0}\]
+    admet la solution triviale, $\bvec{x} = \bvec{0}$, pour unique solution.
+}
+
+\parag{Théorème}{
+    Soit $T: \mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ une application linéaire, et $A$ la matrice canoniquement associée à $T$ ($T\left(\bvec{x}\right) = A \bvec{x}$). Alors:
+    \begin{enumerate}
+        \item $T$ est surjective si et seulement si les colonnes de $A$ engendrent $\mathbb{R}^{m}$.
+        \item $T$ est injective si et seulement si les colonnes de $A$ sont linéairement indépendantes.
+    \end{enumerate}
+}
+
+\parag{Résumé personnel}{
+    Soient $A \in \mathbb{R}^{m \times n}$, une matrice, et $T$ l'application linéaire définie telle que
+    \[T\left(\bvec{x}\right) = A \bvec{x}\]
+
+    Les propriétés suivantes sont équivalentes:
+    \begin{enumerate}
+        \item $T$ est surjective.
+        \item Il existe dans chaque ligne de $A$ une position pivot.
+        \item Pour tout $\bvec{b} \in \mathbb{R}^{m}$, l'équation $A \bvec{x} = \bvec{b}$ a au moins une solution.
+        \item Tout vecteur de $\mathbb{R}^{m}$ est une combinaison linéaire des colonnes de $A$.
+        \item Les colonnes de $A$ engendrent $\mathbb{R}^{m}$.
+    \end{enumerate}
+
+    \vspace{1em}
+    De la même manière, les propriétés suivantes sont aussi équivalentes:
+    \begin{enumerate}
+        \item $T$ est injective.
+        \item Il existe dans chaque colonne de $A$ une position pivot.
+        \item Pour tout $\bvec{b} \in \mathbb{R}^{m}$, l'équation $A \bvec{x} = \bvec{b}$ a au plus une solution.
+        \item Les colonnes de $A$ sont linéairement indépendantes.
+        \item $T$ admet la solution triviale pour unique solution.
+        \item Aucune des colonnes de $A$ n'est une combinaison linéaire de celles qui la précèdent.
+    \end{enumerate}
+
+    \vspace{1em}
+    Nous avons aussi les conditions suivantes qui nous permettent de savoir instantanément si une famille de $p$ vecteurs de dimension $n$ sont linéairement dépendants:
+    \begin{enumerate}
+        \item Un des vecteur est le vecteur nul.
+        \item $p > n$.
+    \end{enumerate}
+
+}
+
+\section{Matrices}
+\subsection{Opérations matricielles}
+
+\parag{Propriétés}{
+    Soit $A, B, C$ des matrices de \important{même taille}, et $r, s$ des scalaires. On a les propriétés suivantes:
+    \begin{enumerate}
+        \item $A + B = B + A$
+        \item $\left(A + B\right) + C = A + \left(B + C\right)$
+        \item $A + 0 = A$
+        \item $r\left(A + B\right) = rA + rB$
+        \item $\left(r + s\right)A = rA + sA$
+        \item $r\left(sA\right) = \left(rs\right)A$
+    \end{enumerate}
+}
+
+\parag{Définition du produit matriciel}{
+    Soit $A$ une matrice $m \times n$ et $B$ une matrice $n \times p$ (les $n$ doivent être les mêmes) dont on note les colonnes $\bvec{b}_1, \ldots, \bvec{b}_p$. On appelle produit de $A$ et $B$, et l'on note $AB$ la matrice $m \times p$ dont les colonnes sont $A \bvec{b}_1, \ldots, A \bvec{b}_p$, c'est-à-dire:
+    \[AB = A \begin{bmatrix}  &  &  \\ \bvec{b}_1 & \ldots & \bvec{b}_p \\  &  &  \end{bmatrix} = \begin{bmatrix}  &  &  \\ A \bvec{b}_1 & \ldots & A \bvec{b}_p \\  &  &  \end{bmatrix} \]
+
+    Cette définition est construite de sorte que le produit matriciel correspond à la composition d'applications linéaires.
+}
+
+\parag{Définition équivalente}{
+    Si l'on note $\left(AB\right)_{ij}$ le coefficient $\left(i, j\right)$ de $AB$ et si $A$ est une matrice $m \times n$ alors:
+    \[\left(AB\right)_{ij} = a_{i1} b_{1j} + \ldots + a_{1n} b_{nj}\]
+}
+
+\parag{Propriétés}{
+    Soit $A$ une matrice $m \times n$ et $B$, $C$ deux matrices telles que la sommes et les produits ci-dessous aient un sens. On a:
+    \begin{enumerate}
+        \item $A\left(BC\right) = \left(AB\right)C$
+        \item $A\left(B + C\right) = AB + AC$
+        \item $\left(B + C\right)A = BA + CA$
+        \item $r\left(AB\right) = r\left(A\right)B = A\left(rB\right)$ pour tout scalaire $r$
+        \item $I_m A = A = A I_n$, d'où le nom ``matrice identité''
+    \end{enumerate}
+
+    \subparag{Preuve}{
+        Laissée en exercice au lecteur.
+    }
+}
+
+\parag{Non-propriétés}{
+    Attention, il y a certaines propriétés qui tiennent pour les scalaires mais pas pour les matrices. Ainsi:
+    \begin{enumerate}
+        \item En général, $AB \neq BA$
+        \item On ne peut pas simplifier un produit de matrices. Autrement dit, si $AB = AC$, alors il est en général faux que $B = C$.
+        \item Si un produit $AB$ est égal à la matrice nulle, on ne peut pas en général en déduire que $A = 0$ ou $B = 0$.
+    \end{enumerate}
+}
+
+\parag{Puissance de matrice}{
+Si $A$ est carré, alors les produits $AA$, $A A A$, \ldots\ ont du sens (ce n'est pas le cas si $A$ n'est pas carrée). Donc, on définit la notation :
+\[A^{k} = \underbrace{A A \ldots A A}_{k\text{ fois}} \mathspace k \in \mathbb{N}_0\]
+
+On appelle $A^{k}$, ``$A$ à la puissance $k$''.  Par convention, on prend
+\[A^{0} = I_n\]
+}
+
+\end{document}

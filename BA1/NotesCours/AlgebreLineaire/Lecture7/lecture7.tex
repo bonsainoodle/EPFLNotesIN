@@ -1,0 +1,119 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-10-14 at 08:15:05.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Jeudi 14 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{7}{2021-10-14}{Transposées et inverses}{
+}
+
+\parag{Transposé d'une matrice}{
+    Soit $A \in \mathbb{R}^{m \times n}$. Sa \important{transposée} est $A^{p} \in \mathbb{R}^{n \times m}$ telle que $\left(A^T\right)_{ij} = A_{ji}$.
+
+    En d'autres mots, les lignes deviennent des colonnes et les colonnes deviennent des lignes.
+}
+
+\parag{Propriétés}{
+    \begin{enumerate}[left=0pt]
+        \item $\left(A^T\right)^T = A$
+        \item $\left(A + B\right)^T = A^T + B^T$
+        \item $\left(rA\right)^T = rA^T$
+        \item $\left(AB\right)^T = B^T A^T$
+    \end{enumerate}
+
+    Attention, en général, $\left(AB\right)^T \neq A^T B^T$. En soit c'est logique, car on n'est même pas sûr que le produit $A^T B^T$ est défini si $AB$ l'est (par contre on est sûr que $B^T A^T$ est défini).
+
+    On peu en déduire que
+    \[\left(A_1 A_2 \ldots A_k\right)^T = A_k^T \ldots A_2^T A_1^T\]
+}
+
+\subsection{Inversion de matrices}
+
+\parag{Définition de l'inverse d'une matrice}{
+    $A \in \mathbb{R}^{n \times n}$ (carrée) est \important{inversible} s'il existe une matrice $C \in \mathbb{R}^{n \times n}$ telle que $AC = I_n$ et $CA = I_n$. Dans le cas où $C$ existe, on l'appelle \important{l'inverse} de $A$.
+}
+
+\parag{Unicité}{
+    Si $A$ est inversible, la matrice $C$ telle que $CA = AC = I$ est \important{unique}.
+
+    Dès lors, si $A$ est inversible, son inverse est donc unique et on peut la noter $A^{-1}$ (on utilise une notation qui prend avantage de cette unicité). La matrice $A^{-1}$, si elle existe, est caractérisée par
+    \[A^{-1}A = A A^{-1} = I\]
+
+}
+
+\parag{Nomenclature}{
+    Une matrice non-inversible est appelée \important{singulière}. Une matrice inversible est appelée \important{non-singulière}.
+}
+
+\parag{Théorème}{
+    Si $A$ est une matrice $n \times n$ inversible, alors, pour tout vecteur $\bvec{b} \in \mathbb{R}^{n}$, l'équation $A \bvec{x} = \bvec{b}$ admet pour unique solution le vecteur
+    \[\bvec{x} = A^{-1} \bvec{b}\]
+
+    \subparag{Corollaire}{
+        Si $A$ est inversible, alors les colonnes de $A$ sont linéairement indépendantes et elles engendrent $\mathbb{R}^{n}$.
+    }
+
+
+}
+
+\parag{Déterminant pour les matrices 2x2}{
+    Pour une matrice $A \in \mathbb{R}^{2\times2}$, la quantité $ad - bc$ est tellement importante qu'on lui donne un nom, on l'appel le \important{déterminant} de $A$, noté :
+    \[\det A = \det\begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad - bc\]
+
+    $A$ est inversible si et seulement si $\det A \neq 0$.
+}
+
+\parag{Propriétés de l'inverse}{
+    \begin{enumerate}[left=0pt]
+        \item Si $A$ est une matrice inversible, alors $A^{-1}$ est inversible et
+              \[\left(A^{-1}\right)^{-1} = A\]
+
+        \item Si $A$ et $B$ sont deux matrices $n \times n$ inversibles, alors $AB$ est inversible et
+              \[\left(AB\right)^{-1} = B^{-1} A ^{-1}\]
+
+        \item Si $A$ est une matrice inversible, alors $A^{T}$ l'est aussi, et
+              \[\left(A^{T}\right)^{-1} = \left(A^{-1}\right)^T\]
+    \end{enumerate}
+}
+
+\parag{Corollaire}{
+Le produit de matrices $n \times n$ inversibles est inversible, et l'inverse de ce produit est donné par
+\[\left(A_1 A_2 \ldots A_k\right)^{-1} = A_k^{-1} \ldots A_2^{-1} A_1^{-1}\]
+}
+
+\parag{Calcul de l'inverse}{
+    Soit $A \in \mathbb{R}^{n\times n}$. On veut calculer $A^{-1}$.
+
+    Raisonnons colonne par colonne. Soient $\bvec{e}_1, \ldots, \bvec{e}_n$ les colonnes de $I_n$. La matrice $A^{-1}$ est de taille $n \times n$, elle a donc $n$ colonnes dans $\mathbb{R}^n$. Écrivons:
+    \[A^{-1} = \begin{bmatrix}  &  &  \\  &  &  \\ \bvec{y}_1 & \ldots & \bvec{y}_n \\  &  &  \\  &  &  \end{bmatrix} \]
+
+    La $k$-ème colonne est $\bvec{y}_k$, qu'on peut obtenir de la manière suivante (comme on l'a vu plus haut, en début du cours):
+    \[\bvec{y}_k = A^{-1} \bvec{e}_k \implies A \bvec{y}_k = A A^{-1} \bvec{e}_k = I \bvec{e}_k = \bvec{e}_k\]
+
+    Donc, la $k$-ème colonne de $A^{-1}$ est l'unique solution de l'équation vectorielle suivante:
+    \[A \bvec{y}_k = \bvec{e}_k\]
+
+    On peut donc résoudre cette équation pour chaque colonne de $A^{-1}$. Si $A$ n'est pas inversible, un des systèmes n'aura pas de solution unique.
+
+    Cependant, cela va nous demander de résoudre $n$ système différents, mais qui ont tous la même matrice $A$. On peut donc organiser nos calculs pour résoudre ces $n$ systèmes ensemble. En effet, pour résoudre $A \bvec{x} = \bvec{e}_1$, on va échelonner la matrice augmentée donnée par
+    \[\begin{bmatrix}  &  \\ A & \bvec{e}_1 \\  &  \end{bmatrix} \]
+
+    Sous forme échelonnée réduite, puisque le système est carré et qu'il y a une solution unique, on obtiendra
+    \[\begin{bmatrix}  &  \\ I_n & \bvec{y}_1 \\  &  \end{bmatrix} \]
+
+    On fera exactement le même raisonnement pour $\bvec{y}_2$. Les opérations qu'on fait pour échelonner les matrices augmentées seront les mêmes, ils ne dépendent que de $A$. Donc, si on a la matrice
+    \[ \begin{bmatrix}  &  &  &  \\ A & \bvec{e}_1 & \ldots & \bvec{e}_n \\  &  &  &  \end{bmatrix} = \begin{bmatrix}  &  \\ A & I \\  &  \end{bmatrix} \]
+    et qu'on la réduit, on va obtenir
+    \[\begin{bmatrix}  &  \\ I_n & A^{-1} \\  &  \end{bmatrix} \]
+
+    Cet algorithme n'est pas forcément le plus efficace pour un ordinateur, mais il fonctionne!
+}
+
+\end{document}

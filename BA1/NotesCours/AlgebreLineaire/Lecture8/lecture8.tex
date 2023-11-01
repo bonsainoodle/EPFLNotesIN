@@ -1,0 +1,110 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-10-18 at 13:13:48.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Lundi 18 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{8}{2021-10-18}{Fin des inverses et début des déterminants}{
+}
+
+\parag{Exemple}{
+    Soit la matrice suivante:
+    \[A = \begin{bmatrix} 2 & 3 \\ 2 & 4 \end{bmatrix} \]
+
+    On veut soustraire la ligne $\left(a\right)$ de la ligne $\left(b\right)$. Donc, notre matrice $E_1$ est donnée par :
+    \[E_1 = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix} \implies E_1 A = \begin{bmatrix} 1 & 0 \\ -1 & 1 \end{bmatrix} \begin{bmatrix} 2 & 3 \\ 2 & 4 \end{bmatrix} = \begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix} \]
+
+    On a donc bien eu l'effet voulu. Maintenant, si on veut soustraire trois fois la ligne $\left(b\right)$ à la ligne $\left(a\right)$:
+    \[E_2 = \begin{bmatrix} 1 & -3 \\ 0 & 1 \end{bmatrix} \implies E_2 E_1 A = E_2 \begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix}  = \begin{bmatrix} 1 & -3 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 2 & 3 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix} \]
+
+    Maintenant, on veut diviser la première ligne par 2, donc on a:
+    \[E_3 = \begin{bmatrix} \frac{1}{2} & 0 \\ 0 & 1 \end{bmatrix} \implies E_3 E_2 E_1 A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = I_2\]
+
+    On a donc que
+    \[E_3 E_2 E_1 = A^{-1}\]
+
+    \subparag{Récapitulation}{
+        \begin{itemize}[left=0pt]
+            \item  Les matrices $E$ ci-dessus sont appelées \important{matrices élémentaires}.
+            \item Elles correspondent à des opérations élémentaires sur les lignes et elles sont inversibles.
+            \item Quand on échelonne une matrice, on la multiplie à gauche par une suite de matrices élémentaires.
+            \item En particulière, si $A \in \mathbb{R}^{n\times n}$ est inversible, on sait qu'elle a $n$ pivots. Dès lors, sa forme échelonne réduite est $I_n$. En d'autres mots, il existes une suite d'opérations élémentaires qui réduit $A$ en $I_n$. Donc:
+                  \[E_k \ldots E_2 E_1 A = I_n\]
+
+                  Comme $A$ est inversible, on peut multiplier par $A^{-1}$ à droite:
+                  \[E_k \ldots E_2 E_1 A A^{-1} = I_n A^{-1} \implies A^{-1} = E_k \ldots E_2 E_1\]
+
+        \end{itemize}
+
+        Donc, L'inverse de $A$ est le produit des matrices élémentaires qui réduisent $A$ sous forme échelonnée réduite. En pratique, quand on échelonne
+        \[\begin{bmatrix}  &  &  &  &  &  \\  & A &  &  & I_n &  \\  &  &  &  &  &  \end{bmatrix} \]
+
+        On multiplie à gauche par les matrices $E_1$, $E_2$, \ldots:
+        \begin{multiequality}
+            E_k \ldots E_2 E_1 \begin{bmatrix}  &  &  \\ A &  & I_n \\  &  &  \end{bmatrix} & =  \begin{bmatrix}  &  &  \\ E_k \ldots E_2 E_1 A &  & E_k \ldots E_2 E_1 I_n \\  &  &  \end{bmatrix}  \\
+            & =  \begin{bmatrix}  &  &  \\ I_n &  & A^{-1} \\  &  &  \end{bmatrix}
+        \end{multiequality}
+
+
+    }
+}
+
+\parag{Théorème}{
+    Soit $A$ une matrice carrée $n \times n$. Les propriétés suivantes sont équivalentes, c'est-à-dire qu'elles sont soit toutes vraies, soit toutes fausses.
+    \begin{enumerate}
+        \item $A$ est inversible.
+        \item $A$ est équivalente selon les lignes à la matrice unité $n \times n$, $I_n$.
+        \item $A$ admet $n$ positions de pivot.
+        \item L'équation $A \bvec{x} = \bvec{0}$ admet la solution triviale pour unique solution.
+        \item Les colonnes de $A$ sont linéairement indépendantes.
+        \item L'application $\bvec{x} \mapsto A \bvec{x}$ est injective.
+        \item Pour tout vecteur $\bvec{b} \in \mathbb{R}^{n}$, l'équation $A \bvec{x} = \bvec{b}$ admet au moins une solution (on aurait aussi pu dire ``une solution unique'', ou au plus une solution).
+        \item Les colonnes de $A$ engendrent $\mathbb{R}^{n}$.
+        \item L'application linéaire $x \mapsto A \bvec{x}$ est surjective.
+              \item\label{enum:inverseMultiplicationGauche} Il existe une matrice $C$ de taille $n \times n$ telle que $CA = I_n$.
+              \item\label{enum:inverseMultiplicationDroite} Il existe une matrice $D$ de taille $n \times n$ telle que $AD = I_n$.
+        \item $A^T$ est inversible.
+    \end{enumerate}
+}
+
+\subsection{Déterminant}
+
+\parag{Définition pour une matrice $n \times n$}{
+    Soit $A \in \mathbb{R}^{n \times n}$:
+    \[A = \begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\ \vdots & \vdots &  & \vdots \\ a_{n1} & a_{n2} & \ldots & a_{nn} \end{bmatrix} \]
+
+    Par $A_{ij}$, on désigne la matrice de taille $\left(n-1\right)\times \left(n -1\right)$ obtenu en effaçant la $i$-ème ligne et la $j$-ème colonne de $A$.
+
+    Le \important{déterminant de $A$} est définit récursivement comme suit:
+    \begin{itemize}
+        \item Si $n = 1$, $\det A = a_{11}$.
+        \item Si $n > 1$,
+              \[\det A = \sum_{j=1}^{n} a_{ij} \underbrace{\left(-1\right)^{i + j} \det A_{ij}}_{\text{cofacteur $\left(i, j\right)$ de $A$}} \]
+              où $i$ est une ligne qu'on a choisie. Le résultat ne dépend pas de la ligne qu'on choisit à chaque itération.
+    \end{itemize}
+
+    On peut se représenter le signe de la manière suivante, pour une matrice $5\times5$:
+    \[\begin{bmatrix} + & - & + & - & + \\ - & + & - & + & - \\ + & - & + & - & + \\ - & + & {\color{red}-} & + & - \\ + & - & + & - & + \end{bmatrix} \]
+}
+
+\parag{Théorème}{
+    Pour $A \in\mathbb{R}^{n \times n}$ quelconque, on a
+    \[\det A = \det A^{T}\]
+
+    \subparag{Conséquence}{
+        Dans la définition du déterminant, on peut choisir de calculer ``l'expansion en cofacteurs'' du déterminant le long d'une ligne \important{ou} d'une colonne au choix.
+    }
+}
+
+\parag{Le cas d'une matrice triangulaire}{
+    Si on a une matrice triangulaire supérieure, triangulaire inférieure ou diagonale, alors son déterminant est donné par le produit des coefficients diagonaux.
+}
+
+\end{document}

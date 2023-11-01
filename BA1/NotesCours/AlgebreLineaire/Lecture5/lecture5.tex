@@ -1,0 +1,80 @@
+\documentclass{article}
+
+% Expanded on 2021-10-07 at 08:11:08.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Jeudi 07 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{5}{2021-10-07}{Début des applications linéaires}{
+}
+
+
+\section{Introduction aux applications linéaires}
+\subsection{Applications linéaires}
+
+\parag{Introduction}{
+    Étant donnés un vecteur $\bvec{x} \in \mathbb{R}^{n}$ et une matrice $A \in \mathbb{R}^{m\times n}$, on a défini le produit $A \bvec{x}$ comme suit:
+    \[A \bvec{x} = x_1 \bvec{a}_1 + \ldots + x_n \bvec{a}_n\]
+    où $\bvec{a}_1, \ldots, \bvec{a}_n \in \mathbb{R}^m$ sont les colonnes de $A$. Donc, \important{une matrice $A \in \mathbb{R}^{m \times n}$ permet de transformer chaque vecteur de $R^{n}$ en vecteur de $R^{m}$}
+}
+
+\parag{Définition application}{
+    On appelle \important{application} (ou fonction, ou transformation) de $\mathbb{R}^{n}$ vers $\mathbb{R}^{m}$ une règle $T$ qui associe à tout vecteur de $\mathbb{R}^{n}$ un vecteur de $\mathbb{R}^{m}$. On écrit:
+    \[\begin{split}
+            T: \mathbb{R}^{n} &\longmapsto \mathbb{R}^{m} \\
+            \bvec{x} &\longmapsto T\left(\bvec{x}\right)
+        \end{split}\]
+
+    On appelle $\mathbb{R}^{n}$ l'espace de départ et $\mathbb{R}^{m}$ l'espace d'arrivée.
+}
+
+\parag{Terminologie}{
+    \begin{itemize}[left=0pt]
+        \item $T\left(\bvec{x}\right)$ est l'image de $\bvec{x}$ par $T$.
+        \item L'image de $T$ est l'ensemble des images de tous les $\bvec{x}$ par $T$.
+        \item Étant donné une matrice $A \in \mathbb{R}^{m\times n}$, la règle $\bvec{x} \mapsto A \bvec{x}$ est un exemple d'application de $\mathbb{R}^{n}$ vers $\mathbb{R}^{m}$
+
+              On appelle cela une \important{transformation matricielle}.
+    \end{itemize}
+
+}
+
+\parag{Application linéaire}{
+    Une \important{application $T$ est linéaire} si elle suit les deux propriétés suivantes:
+    \begin{enumerate}
+        \item $T\left(\bvec{u} + \bvec{v}\right) = T\left(\bvec{u}\right) + T\left(\bvec{v}\right)$
+        \item $T\left(c \bvec{u}\right) = cT\left(\bvec{u}\right)$
+    \end{enumerate}
+    pour tous $\bvec{u}, \bvec{v}$ dans l'espace de départ de $T$ et pour tout $c \in\mathbb{R}$.
+}
+
+\parag{Propriétés de la transformation linéaire}{
+    La définition a ces trois conséquences directes:
+    \begin{enumerate}
+        \item $T\left(\bvec{0}\right) = \bvec{0}$
+        \item $T\left(c \bvec{u} + d \bvec{v}\right) = cT\left(\bvec{u}\right) + dT\left(\bvec{v}\right)$
+        \item $T\left(c_1 \bvec{v}_1 + \ldots + c_p \bvec{v}_p\right) = c_1 T\left(\bvec{v}_1\right) + \ldots + c_p T\left(\bvec{v}_p\right)$
+    \end{enumerate}
+}
+
+\parag{Proposition}{
+    On sait que si $T$ est linéaire, alors $T\left(c \bvec{u} + d \bvec{v}\right) = c T\left(\bvec{u}\right) + d T\left(\bvec{v}\right)$ tient pour tous $\bvec{u}, \bvec{v}, c, d$. Cependant, la réciproque tient aussi (on peut utiliser cette propriété pour démontrer qu'une application est linéaire).
+}
+
+\parag{Théorème}{
+    Soit $T: \mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ une application linéaire. Il existe une unique matrice $A$ telle que
+    \[T\left(\bvec{x}\right) = A \bvec{x} \mathspace \forall x \in \mathbb{R}^{n}\]
+
+    De plus, $A$ est la matrice de taille $m\times n $ donnée par
+    \[A = \begin{bmatrix}  &  &  \\  &  &  \\ T\left(\bvec{e}_1\right) & \ldots & T\left(\bvec{e}_n\right) \\  &  &  \\  &  &  \end{bmatrix} \]
+
+    où $\bvec{e}_1, \ldots, \bvec{e}_n$ sont les colonnes de la matrice identité $I_n$ (ils changent selon la dimension donnée par le contexte, $\bvec{e}_1 = \left[1, 0\right]^T$ en deux dimensions, mais $\bvec{e}_1 = \left[1, 0, 0\right]^T$ en trois dimensions).  On appelle $A$ la \important{matrice standard} de l'application linéaire $T$.
+}
+
+\end{document}

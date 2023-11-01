@@ -1,0 +1,114 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-10-25 at 13:15:31.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Lundi 25 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{10}{2021-10-25}{Entrée dans l'hyper-espace}{
+}
+
+\section{Espaces et sous-espaces vectoriels}
+\subsection{Espaces vectoriels}
+
+\parag{Définition}{
+    On appelle un \important{espace vectoriel} tout ensemble non vide $V$ constitué d'objets appelés vecteurs, sur lequel sont définies deux opérations appelées addition et multiplication par un scalaire (nombre réel). Ces opérations vérifient les dix axiomes énumérées ci-après, quels que soient les vecteurs $\bvec{u}$, $\bvec{v}$ et $\bvec{w}$ de $V$ et les scalaires $c$ et $d$:
+    \begin{enumerate}
+        \item La somme de $\bvec{u}$ et $\bvec{v}$, notée $\bvec{u} + \bvec{v}$, est dans $V$.
+        \item $\bvec{u} + \bvec{v} = \bvec{v} + \bvec{u}$
+        \item $\left(\bvec{u} + \bvec{v}\right) + \bvec{w} = \bvec{u} + \left(\bvec{v} + \bvec{w}\right)$
+        \item Il existe un vecteur de $V$ dit vecteur nul, ou zéro, noté $\bvec{0}$, tel que $\bvec{u} + \bvec{0} = \bvec{u}$
+        \item Pour tout vecteur de $\bvec{u}$ de $V$, il existe un vecteur $-\bvec{u}$ de $V$ tel que $\bvec{u} + \left(-\bvec{u}\right) = \bvec{0}$.
+        \item Le produit du vecteur $\bvec{u}$ par le scalaire $c$, noté $c \bvec{u}$, est dans $V$.
+        \item $c\left(\bvec{u} + \bvec{v}\right) = c \bvec{u} + c \bvec{v}$
+        \item $\left(c + d\right)\bvec{u} = c \bvec{u} + d \bvec{u}$
+        \item $c\left(d \bvec{u}\right) = \left(cd\right)\bvec{u}$
+        \item $1 \bvec{u} = \bvec{u}$
+    \end{enumerate}
+
+    En d'autres mots, la somme de deux vecteurs doit suivre ces 5 axiomes:
+
+    \begin{center}
+        \begin{minipage}[t]{0.45\textwidth}\vspace{0pt}
+            Somme de deux vecteurs:
+            \begin{enumerate}
+                \item Stable.
+                \item Commutative.
+                \item Associative.
+                \item Existence du vecteur nul.
+                \item Existence de l'inverse.
+            \end{enumerate}
+
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}\vspace{0pt}
+            Produit par un scalaire:
+            \begin{enumerate}
+                \item Stable.
+                \item Distributive sur une somme de vecteur.
+                \item Distributive sur une somme de scalaire.
+                \item Associative.
+                \item Existence de l'unité.
+            \end{enumerate}
+
+        \end{minipage}
+    \end{center}
+}
+
+\parag{Propriétés}{
+    Soit $V$, un espace vectoriel. Alors, nous avons les propriétés suivantes:
+    \begin{enumerate}
+        \item Le vecteur nul $\bvec{0}$ est unique.
+        \item Pour $\bvec{u} \in V$ donné, le vecteur $-\bvec{u}$ est unique.
+        \item $0 \bvec{u} = 0$
+        \item $c \bvec{0} = \bvec{0}$
+        \item $-\bvec{u} = \left(-1\right)\bvec{u}$
+    \end{enumerate}
+}
+
+\subsection{Sous-espaces vectoriels}
+\parag{Définition de sous-espace vectoriel}{
+    On appelle un \important{sous-espace vectoriel}, ou, en abrégé, sous-espace, d'un espace vectoriel $V$ toute sous-ensemble $H$ de $V$ possédant les trois propriétés suivantes:
+    \begin{enumerate}
+        \item Le vecteur nul de $V$ appartient à $H$.
+        \item $H$ est stable par l'addition vectorielle, i.e:
+              \[\bvec{u}, \bvec{v} \in H \implies \bvec{u} + \bvec{v} \in H\]
+        \item $H$ est stable par la multiplication par un scalaire, i.e, pour tout scalaire $c$:
+              \[\bvec{u} \in H \implies c \bvec{u} \in H\]
+
+    \end{enumerate}
+
+    \subparag{Remarque}{
+        Il est presque suffisant d'avoir les propriétés (2) et (3) pour avoir un sous-espace, puisque $0\cdot \bvec{u} = \bvec{0}$. Cependant, cela pose problème si $H$ est complètement vide. Uniquement dans ce cas, les propriétés (2) et (3) tiennent, mais la propriété (1) ne tient pas.
+    }
+
+}
+
+\parag{Exemple 1}{
+    Soit $V = \mathbb{R}^{n}$ et
+    \[H = \left\{\bvec{x} \in \mathbb{R}^{n} \telque x_1 + \ldots + x_n = 0\right\}\]
+
+    On remarque que les trois propriétés tiennent:
+    \begin{enumerate}
+        \item $\bvec{0}$ est dans $H$. En effet: \[x_1 + \ldots + x_n = 0 + \ldots + 0 = 0\]
+        \item Si $\bvec{u}, \bvec{v} \in H$, alors $\bvec{u} + \bvec{v} \in H$, en effet:
+              \[u_1 + \ldots + u_n = 0 \text{ et } v_1 + \ldots + v_n = 0 \implies \left(u_1 + v_1\right) + \ldots + \left(u_n + v_n\right) = 0\]
+        \item Si $\bvec{u} \in H$ et $c$ est un scalaire, alors $c \bvec{u} \in H$, en effet:
+              \[u_1 + \ldots + u_n = 0 \implies c u_1 + \ldots + c u_n = c\left(u_1 + \ldots + u_n\right) = c\cdot0 = 0\]
+    \end{enumerate}
+
+    Donc, $H$ est un sous-espace vectoriel de $\mathbb{R}^{n}$.
+
+}
+
+\parag{Remarque}{
+    On appelle $\left\{\bvec{0}\right\}$ le \important{sous-espace nul} ou \important{sous-espace trivial}.
+}
+
+\end{document}

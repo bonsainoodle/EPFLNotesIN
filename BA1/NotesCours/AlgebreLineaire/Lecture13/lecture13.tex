@@ -1,0 +1,109 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-11-04 at 08:14:01.
+
+\usepackage{../../style}
+
+\title{Algèbre}
+\author{Joachim Favre}
+\date{Jeudi 04 novembre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{13}{2021-11-04}{Dimension et lignes}{
+}
+
+\subsection{Dimension}
+
+\parag{Théorème}{
+    Si un espace vectoriel $V$ admet une base de $n$ vecteurs, alors toutes les bases de $V$ comportent exactement $n$ vecteurs.
+
+    \subparag{Isomorphisme}{
+        Si $\mathcal{B} = \left(\bvec{b}_1, \ldots, \bvec{b}_n\right)$ est une base de $V$, alors $V$ est isomorphe à $\mathbb{R}^{n}$. Le nombre $n$ ne dépend \textit{pas} du choix de la base.
+    }
+
+    \subparag{Remarque}{
+        On sait que tout espace vectoriel a une base, puisqu'on peut en extraire une d'une famille de vecteurs qui l'engendrent.
+    }
+}
+
+\parag{Définition de la dimension}{
+    On appelle \important{dimension de $V$}, notée $\dim V$, le nombre d'éléments d'une base de $V$.
+
+    Par convention, $\dim \left\{\bvec{0}\right\} = 1$.
+}
+
+\parag{Complétion d'une base}{
+    Soit $H$ un sous-espace vectoriel de $V$. Toute famille libre de $H$ peut être complétée pour former une base de $H$.
+
+    Cette affirmation est celle complémentaire au théorème de la base extraite.
+}
+
+\parag{Dimension d'un sous-espace}{
+    Soit $H$ un sous-espace vectoriel de $V$. Alors:
+    \[\dim H \leq \dim V\]
+}
+
+\parag{Nombre de vecteurs d'une base}{
+    Soit $V$ un espace vectoriel avec $\dim V = p$.
+    \begin{itemize}
+        \item Toute famille libre de $p$ éléments de $V$ est une base de $V$.
+        \item Toute famille de $p$ éléments qui engendre $V$ (exactement) est une base de $V$.
+    \end{itemize}
+}
+
+\parag{Dimension du kernel et de l'image}{
+    De manière générale, on remarque que la \important{dimension de $\ker A$} est égale au nombre de variables libres de l'équation $A \bvec{x} = \bvec{0}$, et la \important{dimension de $\im A$} est égale au nombre de colonnes pivots de $A$.
+
+    On se rend compte, qu'il nous aurait suffit d'un échelonnement non-réduit pour les trouver. De plus, on voit que:
+    \[\dim \ker A + \dim \im A = n\]
+    où $n$ est le nombre de colonnes de $A$.
+}
+
+\subsection{Rang}
+\parag{Définition de rang}{
+    Le \important{rang} (``rank'' en anglais) d'une matrice $A \in \mathbb{R}^{m \times n}$ est la dimension du sous-espace engendré par ses colonnes:
+    \[\rang A = \dim \im A\]
+}
+
+\parag{Observation}{
+    Comme $\im A$ est un sous-espace $\mathbb{R}^{m}$, on a :
+    \[\rang A \leq m\]
+
+    Et, puisque $\im A$ est engendré par $n$ vecteurs, on a aussi:
+    \[\rang A \leq n\]
+}
+
+\parag{Théorème du rang}{
+    L'égalité suivante tiens toujours:
+    \[\rang A + \dim \ker A = n\]
+}
+
+\subsection{Espace engendré par les lignes}
+
+\parag{Espace des lignes}{
+    L'espace des lignes de $A \in \mathbb{R}^{m\times n}$ est le sous-espace de $\mathbb{R}^{n}$ engendré par les lignes, noté:
+    \[\lgn A = \im A^T = \vect\left\{\ligne_1\left(A\right), \ldots, \ligne_m\left(A\right)\right\}\]
+}
+
+\parag{Observation}{
+    On remarque que, puisque $\lgn A$ est un sous-espace de $\mathbb{R}^{n}$:
+    \[\lgn A \leq n\]
+
+    De plus, puisque $\lgn A$ est engendré par $m$ vecteurs:
+    \[\lgn A \leq m\]
+
+    Aussi, on remarque que:
+    \[\dim\lgn A = \dim\im A^T = \rang A^T\]
+}
+
+\parag{Théorème}{
+    On a l'égalité suivante:
+    \[\rang A = \rang A^T\]
+
+    Autrement dit:
+    \[\dim\im A = \dim\lgn A\]
+}
+
+\end{document}

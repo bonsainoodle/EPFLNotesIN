@@ -1,0 +1,108 @@
+\documentclass[a4paper]{article}
+
+% Expanded on 2021-10-28 at 08:16:09.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Jeudi 28 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{11}{2021-10-28}{Retour à l'App. (store) linéaire}{
+}
+
+\parag{Théorème}{
+    Si $\bvec{v}_1$, \ldots, $\bvec{v}_p$ sont des vecteurs d'un espace vectoriel $V$, alors $\vect\left\{\bvec{v}_1, \ldots, \bvec{v}_p\right\}$ est un sous-espace vectoriel de $V$.
+}
+
+\parag{Théorème}{
+    L'ensemble des solutions $H$ d'un système homogène $A \bvec{x} = \bvec{0}$ avec $A \in \mathbb{R}^{m \times n}$ est un sous-espace vectoriel de $\mathbb{R}^{n}$.
+}
+
+\subsection{Noyaux, images, et applications linéaires}
+\parag{Définition de kernel et d'image}{
+    Soit $A \in \mathbb{R}^{m \times n}$ une matrice. On lui associe deux espaces.
+
+    \important{Le noyau de $A$}, ``kernel'' en anglais, l'ensemble solution du système homogène:
+    \[\ker A = \left\{\bvec{x} \in \mathbb{R}^{n} \telque A \bvec{x} = \bvec{0}\right\}\]
+
+    C'est un sous-espace de $\mathbb{R}^{n}$.
+
+    \important{L'image de $A$}, le sous-espace engendré par les colonnes de $A$ :
+    \[\im A = \vect\left\{\bvec{a}_1, \ldots, \bvec{a}_n\right\} = \left\{A \bvec{x} \in \mathbb{R}^{m} \telque \bvec{x} \in \mathbb{R}^{n}\right\}\]
+
+    En d'autres mots:
+    \[\im A = \left\{\bvec{b} \in \mathbb{R}^{m} \telque \exists \bvec{x} \in \mathbb{R}^{n}, A \bvec{x} = \bvec{b}\right\}\]
+
+
+    C'est un sous-espace de $\mathbb{R}^{m}$.
+}
+
+\subsection{Extension aux applications linéaires}
+\parag{Définition application linéaire }{
+    On appelle une \important{application linéaire} $T$ d'un espace vectoriel $V$ dans un espace vectoriel $W$ un procédé qui, à tout vecteur de $\bvec{x}$ de $V$, associe un unique vecteur $T\left(\bvec{x}\right)$ de $W$ de façon que:
+    \begin{enumerate}
+        \item $T\left(\bvec{u} + \bvec{v}\right) = T\left(\bvec{u}\right) + T\left(\bvec{v}\right)$ pour tout $\bvec{u}, \bvec{v} \in V$
+        \item $T\left(c \bvec{u}\right) = cT\left(\bvec{u}\right)$ pour tout $\bvec{u}$ de $V$ et tout scalaire $c$.
+    \end{enumerate}
+
+}
+
+\parag{Extension}{
+    On définit le noyau de $T$ :
+    \[\ker T = \left\{\bvec{x} \in V \telque T\left(\bvec{x}\right) = \bvec{0}\right\}\]
+
+    On définit aussi l'image de $T$ :
+    \[\im T = \left\{T\left(\bvec{x}\right) \in W \telque \bvec{x} \in V\right\}\]
+
+    On peut montrer que $\ker T$ est un sous-espace de $V$ et $\im T$ est un sous-espace de $W$.
+
+    \subparag{Note}{
+        Dans ce cas, on n'a pas $T\left(\bvec{x}\right) = A \bvec{x}$, puisque $V$ et $W$ peuvent ne pas être $\mathbb{R}^{n}$ et $\mathbb{R}^{m}$.
+    }
+}
+
+\subsection{Familles libres et bases}
+\parag{Définition}{
+    Soit $V$ un espace vectoriel. On dit que les vecteurs $\bvec{v}_1, \ldots, \bvec{v}_p$ dans $V$ sont \important{linéairement indépendants} si l'équation
+    \[c_1 \bvec{v}_1 + \ldots c_p \bvec{v}_p = \bvec{0}\]
+    admet comme seule solution la solution triviale $c_1 = \ldots = c_p = 0$.
+
+    Dans ce cas, on dit que la \important{famille} $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ est \important{libre}. Sinon, on dit que la famille est \important{liée.}
+}
+
+\parag{Théorème}{
+    Une famille $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ d'au moins deux vecteurs, avec $\bvec{v}_1 \neq \bvec{0}$, est liée si et seulement s'il existe $j > 1$ tel que $\bvec{v}_j$ soit une combinaison linéaire des vecteurs qui viennent avant lui, soit $\bvec{v}_1, \ldots, \bvec{v}_{j-1}$.
+}
+
+\parag{Définition des bases}{
+    Soit $H$ un sous-espace de $V$ (on pourrait très bien avoir $H = V$).
+
+
+    Une famille de vecteurs $\left(\bvec{b}_1, \ldots, \bvec{b}_p\right)$ de $V$ est une \important{base de $H$} si:
+    \begin{enumerate}
+        \item La famille est libre : les vecteurs $\bvec{b}_1, \ldots, \bvec{b}_p$ sont linéairement indépendants
+        \item La famille engendre $H$ : $H = \vect\left(\bvec{b}_1, \ldots, \bvec{b}_p\right)$, mais ni plus ni moins.
+    \end{enumerate}
+
+    \subparag{Remarque}{
+        En d'autres mots, une base est le nombre minimum de vecteurs qui engendrent l'espace vectoriel. Si on en rajoute un, alors ils ne seront plus linéairement indépendants.
+    }
+}
+
+\parag{Matrices inversibles}{
+    On remarque que si on a $A \in \mathbb{R}^{n \times n}$ inversible, alors les colonnes de $A$ forment une base de $\mathbb{R}^{n}$, puisque ses colonnes sont donc linéairement indépendantes et engendrent $\mathbb{R}^{n}.$
+
+    Dans l'autre sens, si la matrice n'est pas inversible, alors les colonnes de $A$ ne sont pas linéairement indépendantes, donc elles forment pas de base.
+
+    En d'autres mots, une matrice est inversible si et seulement si ses colonnes forment une base de $\mathbb{R}^{n}$.
+}
+
+\parag{Base canonique de $\mathbb{R}^{n}$}{
+    Les colonnes de la matrice identité $I_n$ forment une base de $\mathbb{R}^n$, puisqu'elle est inversible, on l'appelle la \important{base canonique de $\mathbb{R}^{n}$}.
+}
+
+\end{document}

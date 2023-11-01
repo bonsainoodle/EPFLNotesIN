@@ -1,0 +1,87 @@
+\documentclass{article}
+
+% Expanded on 2021-09-22 at 22:30:01.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Jeudi 23 septembre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{1}{2021-09-23}{Début des systèmes d'équations linéaires}{
+}
+
+\section{Équations linéaires}
+\subsection{Le cas d'une unique équation}
+\parag{Définition des équations linéaires}{
+    Pour des variables (= inconnues) $x_1, \ldots, x_n$, une \important{équation linéaire} est une équation de la forme
+    \[a_1 x_1 + a_2 x_2 + \ldots + a_n x_n = b\]
+    pour des nombres $a_1, a_2, \ldots, a_n$ et $b$ indépendants des variables.
+}
+
+\subsection{Système (d'équations) linéaires}
+\parag{Définition des systèmes d'équations linéaires, des solutions et des ensembles solutions}{
+    Un \important{système d'équation linéaires} est une collection de une ou plusieurs équations linéaire en des variables $x_1, \ldots, x_n$. S'il y a $m$ équations en $n$ variables, on écrit
+    \begin{systemofequations}{}
+        &\ a_{11} x_1 + \ldots + a_{1n} x_n = b_1 \\
+        &\ \vdots \\
+        &\ a_{m1} x_1 + \ldots + a_{mn} x_n = b_m
+    \end{systemofequations}
+    avec $a_{ij}$, le coefficient de $x_j$ dans la ième équation.
+
+    Étant donnée une liste de nombres $\left(s_1, \ldots, s_n\right)$, on dit que cette liste est une \important{solution} (du système) si les $m$ équations sont vraies quand on remplace $x_1$ par $s_1$, \ldots, et $x_n$ par $s_n$.
+
+    L'ensemble des solutions d'un système est son \important{ensemble solution.} Deux systèmes sont \important{équivalents} s'ils ont le même ensemble solutions.
+}
+
+\parag{Théorème}{
+    Un système linéaire a zéro (aucune solution n'existe), une (la solution existe et est unique) ou une infinité (des solutions existent, mais elles ne sont pas uniques) de solutions.
+}
+
+\subsection{Système triangulaire}
+\parag{Remarque}{
+    Certains systèmes sont plus faciles à résoudre que d'autres. Les diagonaux sont plus simples que le triangulaires, qui sont plus simples que les ``généraux''.  La stratégie va être de transformer un système général en système triangulaire (ou aussi triangulaire que possible).
+}
+
+\subsection{Opérations élémentaires}
+\parag{Théorème des opérations élémentaires}{
+    Les opérations suivantes ne changent pas l'ensemble solution:
+    \begin{enumerate}
+        \item Permuter deux équations.
+        \item Multiplier une équation par un nombre non nul.
+        \item Additionner à une équation un multiple d'une autre équation.
+    \end{enumerate}
+
+    On les appelle des \important{opérations élémentaires}.
+}
+
+\subsection{Matrices}
+\parag{Notation matricielle}{
+    Les équations sont de la forme $a_1 x_1 + \ldots a_n x_n = b_n$. Vu qu'elles ont toutes la même forme, seuls les coefficients $a_1, \ldots, a_n, b_n$ sont importants. Si on a un système
+    \begin{systemofequations}{}
+        &\ a_{11} x_1 + \ldots + a_{1n} x_n = b_1 \\
+        &\ \vdots \\
+        &\ a_{m1} x_1 + \ldots + a_{mn} x_n = b_m
+    \end{systemofequations}
+
+    On collecte les nombres utiles dans deux tableaux appelés matrices:
+    \[\begin{bmatrix} a_{1,1} & \ldots & a_{1n} \\ \vdots &  & \vdots \\ a_{m1} & \ldots & \cdot a_{mn} \end{bmatrix} \mathspace \begin{bmatrix} a_{1,1} & \cdots & a_{1n} & b_1 \\ \vdots &   & \vdots & \vdots \\ a_{m1} & \ldots & a_{mn} & b_m \end{bmatrix}\]
+
+    Sur la gauche, la \important{matrice des coefficients} $a_{ij}$ est de taille $m \times n$. Sur la droite, c'est la \important{matrice augmentée}, qui est de taille $m \times \left(n + 1\right)$ (on peut mettre des traitillés juste avant la dernière colonne de cette matrice augmentée, mais on n'est pas obligé).
+
+    Chaque système linéaire correspond à une matrice augmentée, et vice versa.
+}
+
+\parag{Les opérations élémentaires}{
+    Nous retrouvons ces mêmes opérations élémentaires pour une matrice augmenté:
+    \begin{enumerate}
+        \item Permuter deux équations. / Permuter deux lignes.
+        \item Multiplier une équation par un nombre non nul. / Multiplier une ligne par un nombre non nul.
+        \item Additionner à une équation un multiple d'une autre équation. / Additionner à une ligne un multiple d'une autre ligne.
+    \end{enumerate}
+}
+
+\end{document}

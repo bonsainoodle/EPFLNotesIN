@@ -1,0 +1,82 @@
+\documentclass{article}
+
+% Expanded on 2021-10-04 at 13:09:57.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire 1}
+\author{Joachim Favre}
+\date{Lundi 04 octobre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{4}{2021-10-04}{Dépendance linéaire}{
+}
+
+\parag{Théorème}{
+    Si $\bvec{p}$ est solution de $A \bvec{x} = \bvec{b}$ (en particulier, le système est compatible), alors l'ensemble solution de $A \bvec{x} = \bvec{b}$ est l'ensemble des vecteurs de la forme:
+    \[\bvec{w} = \bvec{p} + \bvec{h}\]
+    où $\bvec{h}$ est une solution quelconque de $A \bvec{x} = \bvec{0}$ ($\bvec{h}$ pour homogène).
+
+    En d'autres mots, $\bvec{p}$ est une solution de $A \bvec{x} = \bvec{b}$ et $\bvec{h}$ est une solution quelconque de $A \bvec{x} = \bvec{0}$ si et seulement si $\bvec{w} = \bvec{p} + \bvec{h}$ est une solution de $A \bvec{x} = \bvec{b}$.
+}
+
+\parag{Interprétation géométrique}{
+    Géométrique, l'ensemble solution de $A \bvec{x} = \bvec{b}$ (s'il est non-vide) est une \important{translation} de celui de $A \bvec{x} = \bvec{0}$.
+
+    \imagehere{TranslationSolutionNulle.png}
+}
+
+\subsection{Indépendance linéaire}
+\parag{Indépendance linéaire}{
+    Étant donné une matrice $A$ avec colonnes $\bvec{a}_1, \ldots, \bvec{a}_n$, le système homogène $A \bvec{x} = \bvec{0}$ est équivalent à l'équation vectorielle
+    \[x_1 \bvec{a}_1 + \ldots + x_n \bvec{a}_n = \bvec{0}\]
+
+    Demander si $A \bvec{x} = \bvec{0}$ possède une solution non-triviale, est donc équivalent à demander s'il existe une façon non triviale de combiner les vecteurs $\bvec{a}_1, \ldots, \bvec{a}_n$ de façon à obtenir $\bvec{0}$. Si c'est le cas, on dit que les vecteurs sont \important{linéairement dépendants}.
+
+    Plus généralement, on dit qu'une famille $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ de vecteurs de $\mathbb{R}^n$ est \important{libre}, ou que ses vecteurs sont \important{linéairement indépendants}, si l'équation vectorielle
+    \[x_1 \bvec{v}_1 + \ldots + x_p \bvec{v}_p = \bvec{0}\]
+
+    admet la solution trivial comme unique solution. À l'inverse, on dit que cette famille est \important{liée}, ou que ses vecteurs sont \important{linéairement dépendants} dans le cas où il existe des coefficients $x_1, \ldots, x_p$ non nuls pour certains tel que l'équation ci-dessus est vérifiée.
+
+    Les \important{colonnes d'une matrice} $A$ sont linéairement indépendantes si et seulement si l'équation $A \bvec{x} = \bvec{0}$ admet la solution triviale pour solution unique.
+}
+
+\parag{Le cas d'un unique vecteur}{
+    Une famille avec \important{un seul vecteur} $\bvec{v}$ est linéairement indépendant si et seulement si
+    \[\bvec{v} \neq \bvec{0}\]
+}
+
+\parag{Le cas avec deux vecteurs}{
+    Une famille avec \important{deux vecteurs} $\left(\bvec{v}_1, \bvec{v}_2\right)$ est linéairement indépendante si et seulement s'ils ne sont pas colinéaires:
+    \[\nexists c \in \mathbb{R} \telque c \bvec{v}_1 = \bvec{v}_2\]
+}
+
+\parag{Trois vecteurs}{
+    Peut-on avoir trois vecteurs dans $\mathbb{R}^3$ tels que aucune paire n'est colinéaire, mais les vecteurs sont quand même linéairement dépendants ? Oui, par exemple:
+    \[\bvec{v}_1 = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \mathspace \bvec{v}_2 = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \mathspace \bvec{v}_3 = \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \]
+
+    Aucune paire de vecteurs n'est colinéaire, cependant
+    \[\bvec{v}_1 + \bvec{v}_2 - \bvec{v}_3 = \bvec{0}\]
+}
+
+\parag{Théorème}{
+    Si $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ sont linéairement dépendants, alors au moins un des vecteurs est une \important{combinaison linéaire de ceux qui le précèdent}. Cela généralise ce qu'on a dit pour deux vecteurs (qu'il faut qu'ils soient colinéaires pour être linéairement indépendants).
+
+    La réciproque de ce théorème est aussi juste:
+
+    \subparag{Réciproque}{
+        Si au moins un des vecteurs $\bvec{v}_1, \ldots, \bvec{v}_p$ est une combinaison linéaire de ceux qui le précédent, alors $\bvec{v}_1, \ldots, \bvec{v}_p$ sont linéairement dépendants.
+    }
+}
+
+\parag{Théorème}{
+    Si un des vecteurs de $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ est nul, alors la famille est linéairement dépendante.
+}
+
+\parag{Théorème}{
+    Une famille $\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ de vecteurs dans $\mathbb{R}^{n}$ est nécessairement linéairement dépendante si $p > n$ (si $p \leq n$, alors tout peut arriver).
+}
+
+\end{document}

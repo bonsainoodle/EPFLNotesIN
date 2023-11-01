@@ -1,0 +1,90 @@
+\documentclass{article}
+
+% Expanded on 2021-09-30 at 08:03:30.
+
+\usepackage{../../style}
+
+\title{Algèbre linéaire}
+\author{Joachim Favre}
+\date{Jeudi 30 septembre 2021}
+
+\begin{document}
+\maketitle
+
+\lecture{3}{2021-09-30}{Équations vectorielles et matricielles}{
+}
+
+\subsubsection{Équation vectorielle}
+
+\parag{Équation vectorielle}{
+    Une équation vectorielle avec $\bvec{a}_1, \ldots, \bvec{a}_n$ et $\bvec{b}$ dans $\mathbb{R}^m$
+    \[x_1 \bvec{a}_1 + \ldots + x_n \bvec{a}_n = \bvec{b}\]
+
+    a le même ensemble solution que le système linéaire dont la matrice augmentée est
+    \[\begin{bmatrix}  &  &  &  \\ &  &  &  \\ \bvec{a}_1 & \ldots & \bvec{a}_n & \bvec{b} \\  &  &  &  \\  &  &  &  \end{bmatrix} \]
+
+    En particulier, $\bvec{b}$ peut être généré comme combinaison linéaire de $\bvec{a}_1, \ldots, \bvec{a}_n$ si et seulement si ce système linéaire a (au moins) une solution.
+}
+
+\parag{Définition}{
+    Étant donnés des vecteurs $\bvec{v}_1, \ldots, \bvec{v}_n \in \mathbb{R}^n$, on écrit $\vect\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ ou $\Span\left(\bvec{v}_1, \ldots, \bvec{v}_p\right)$ (en anglais) pour désigner \important{le sous-ensemble de $\mathbb{R}^n$ engendré par $\bvec{v}_1, \ldots, \bvec{v}_n$}, c'est-à-dire l'ensemble des vecteurs de la forme
+    \[c_1 \bvec{v}_1 + \ldots + c_n \bvec{v}_n\]
+
+    où les $c_i$ peuvent être n'importe quel scalaire.
+
+    \subparag{Remarque}{
+        Le vecteur nul fait toujours parti du span de n'importe quel ensemble de vecteurs.
+    }
+}
+
+\subsection{Équation matricielle}
+
+\parag{Interprétation géométrique}{
+    Un système peut s'écrire $A \bvec{x} = \bvec{b}$, ce qui est équivalent à l'équation
+    \[x_1 \bvec{a}_1 + \ldots + x_n \bvec{a}_n = \bvec{b}\]
+
+    Donc, il existe (au moins) une solution pour $A \bvec{x} =  \bvec{b}$ si et seulement si $\bvec{b}$ est une combinaison linéaire des colonnes de $A$, c'est à dire, que $\bvec{b} \in \vect\left(\bvec{a}_1, \ldots, \bvec{a}_n\right)$
+}
+
+\parag{Théorème}{
+    Pour $A \in \mathbb{R}^{m \times n}$, les quatre propriétés suivantes sont équivalentes (elles sont soit toutes vraies, soit toutes fausses):
+    \begin{enumerate}
+        \item Pour tout $\bvec{b} \in \mathbb{R}^m$, l'équation $A \bvec{x} = \bvec{b}$ a (au moins) une solution.
+        \item Tout vecteur de $\mathbb{R}^m$ est une combinaison linéaire des colonnes de $A$.
+        \item Les colonnes de $A$ engendrent $\mathbb{R}^{m}$.
+        \item Il existe dans chaque ligne de $A$ une position pivot (attention, $A$ est la matrice des coefficients, pas la matrice augmentée).
+    \end{enumerate}
+
+
+    Note pour (4): on ne peut pas avoir que des zéros dans une ligne, car ça voudrait dire que la matrice échelonnée aurait un pivot dans la colonne de $\bvec{x}$ (puisque, de toutes façons, il a des composantes dans chaque ligne). Donc on serait dans le cas où on aurait $0 = c$, qui est une contradiction.
+}
+
+\parag{Théorème}{
+    Soit $A \in \mathbb{R}^{m\times n}$, $\bvec{u}, \bvec{v} \in \mathbb{R}^{n}$ et $c \in \mathbb{R}$. Alors,
+    \[A \left( \bvec{u} + \bvec{v}\right) = A \bvec{u} + A \bvec{v}\]
+
+    De manière similaire,
+    \[A\left(c \bvec{u}\right) = c A \bvec{u}\]
+}
+
+\subsection{Système homogène}
+
+
+\parag{Système homogène}{
+    On appelle le cas particulier suivant
+    \[A \bvec{x}= \bvec{0}\]
+    un système \important{homogène}.
+
+    Ce système a toujours une solution --- appelée \important{solution triviale}:
+    \[\bvec{x} = \bvec{0}\]
+
+    Cela nous montre donc que les systèmes de cette forme sont toujours compatibles.
+
+    Maintenant, on peut se demander quand il a d'autres solutions (donc une infinité par notre théorème).
+}
+
+\parag{Théorème}{
+    L'équation homogène $A \bvec{x} = \bvec{0}$ admet une solution non-triviale si et seulement si elle possède au moins une variable libre (c'est-à-dire que le système a une infinité de solutions, puisqu'on sait qu'il est compatible).
+}
+
+\end{document}

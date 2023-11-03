@@ -5,14 +5,17 @@ import shutil
 COURSE_NAMES = [
     "AlgebreLineaire",
     "AICC-1",
+    "Analyse-1",
 ]
 COURSE_NAMES_FORMATTED = {
     "AlgebreLineaire": "Alg\`{e}bre lin\\'{e}aire",
     "AICC-1": "Advanced information, computation, communication I",
+    "Analyse-1": "Analyse I",
 }
 COURSE_PROGRESS = {
     "AlgebreLineaire": 13,
     "AICC-1": 13,
+    "Analyse-1": 13,
 }
 
 
@@ -40,7 +43,7 @@ def create_combined_latex(course_name="."):
 
                 \title{%s \\[1em] \large R\'{e}sum\'{e} des notes de Joachim Favre}
                 \author{Tom Massias Jurien de la Gravi\`{e}re}
-                \date{Mercredi 31 octobre 2023}
+                \date{Semestre d'automne 2023}
 
                 \begin{document}
                 \maketitle

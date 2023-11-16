@@ -12,51 +12,19 @@
 \maketitle
 
 \lecture{17}{2021-11-22}{Des calculs de différences, c'est facile non?}{
-\begin{itemize}[left=0pt]
-    \item Explication de 3 autres corollaires du TVI.
-    \item Définition de fonction dérivable.
-    \item Définition de fonction différentiable, et de fonction dérivée.
-    \item Définition des dérivées sur le côté.
-    \item Démonstration qu'une fonction dérivable est continue.
-    \item Explication des opérations algébriques sur les dérivées, et de la dérivée de la composée de deux fonctions dérivables.
-\end{itemize}
-
 }
 
 
 \parag{Corollaire 2}{
     Soient $I$ un intervalle ouvert et $f : I \mapsto \mathbb{R}$ une fonction continue strictement monotone. Alors, $f\left(I\right)$ est un intervalle ouvert
-
-    \imagehere{TVICorollaire2.png}
-
-    \subparag{Étude des hypothèses}{
-        Si la fonction n'est pas continue, alors $f\left(I\right)$ pourrait être l'union d'un intervalle ouvert et d'un intervalle semi-ouvert (voir image du milieu).
-
-
-        Si la fonction n'est pas strictement monotone, alors elle pourrait atteindre son maximum (par exemple), et donc $f\left(I\right)$ serait un intervalle semi-ouvert (voir image de droite (rire de droite)).
-    }
 }
 
 \parag{Corollaire 3}{
     Toute fonction injective continue sur un intervalle est strictement monotone.
-
-    \imagehere{TVICorollaire3.png}
-
-    \subparag{Étude des hypothèses}{
-        Si la fonction est continue mais pas injective, alors elle n'est pas forcément monotone (voir image du milieu).
-
-        On ne sait rien aussi si la fonction est injective mais pas continue (voir image de droite).
-    }
 }
 
 \parag{Corollaire 4}{
-    Toute fonction bijective continue sur un intervalle admet une fonction réciproque qui est continue et strictement monotone.
-
-    \subparag{Remarque}{
-        Le ``strictement monotone'' découle directement du fait que la fonction réciproque soit aussi bijective, donc on peut utiliser le corollaire 3.
-
-        Le point important est que si la fonction $f$ est continue, alors $f^{-1}$ est continue.
-    }
+    Toute fonction bijective continue sur un intervalle admet une fonction réciproque qui est continue (et strictement monotone par le corollaire 3 - étant donné qu'elle est bijective, elle est injective).
 }
 
 \section{Calcul différentiel}
@@ -88,10 +56,10 @@
 \parag{Exemple 2}{
     Soient $f\left(x\right) = \cos\left(x\right)$ et $x_0 \in \mathbb{R}$. On a:
     \begin{multiequality}
-    \lim_{x \to x_0} \frac{\cos\left(x\right) - \cos\left(x_0\right)}{x - x_0} & = \lim_{x \to x_0} \frac{\cos\left(\frac{x + x_0}{2} + \frac{x - x_0}{2}\right) - \cos\left(\frac{x + x_0}{2} - \frac{x - x_0}{2}\right)}{x - x_0}  \\
-    & = \lim_{x \to x_0} \frac{-2\sin\left(\frac{x + x_0}{2}\right)\sin\left(\frac{x - x_0}{2}\right)}{x - x_0}  \\
-    & = \lim_{x \to x_0} -\underbrace{\frac{\sin\left(\frac{x - x_0}{2}\right)}{\frac{x - x_0}{2}}}_{\to 1} \underbrace{\sin\left(\frac{x + x_0}{2}\right)}_{\to \sin\left(x_0\right)}  \\
-    & = -\sin\left(x_0\right)
+        \lim_{x \to x_0} \frac{\cos\left(x\right) - \cos\left(x_0\right)}{x - x_0} & = \lim_{x \to x_0} \frac{\cos\left(\frac{x + x_0}{2} + \frac{x - x_0}{2}\right) - \cos\left(\frac{x + x_0}{2} - \frac{x - x_0}{2}\right)}{x - x_0}  \\
+        & = \lim_{x \to x_0} \frac{-2\sin\left(\frac{x + x_0}{2}\right)\sin\left(\frac{x - x_0}{2}\right)}{x - x_0}  \\
+        & = \lim_{x \to x_0} -\underbrace{\frac{\sin\left(\frac{x - x_0}{2}\right)}{\frac{x - x_0}{2}}}_{\to 1} \underbrace{\sin\left(\frac{x + x_0}{2}\right)}_{\to \sin\left(x_0\right)}  \\
+        & = -\sin\left(x_0\right)
     \end{multiequality}
 
     On utilise la continuité de $\sin$ pour calculer cette limite.
@@ -102,10 +70,10 @@
     \subparag{Remarque personnelle}{
         Je trouve personnellement qu'utiliser le changement de variable $h = x - x_0$ simplifie nos calculs:
         \begin{multiequality}
-        & \lim_{h \to 0} \frac{\cos\left(x_0 + h\right) - \cos\left(x_0\right)}{h} \\
-        = & \lim_{h \to 0} \frac{\cos\left(x_0\right)\cos\left(h\right) - \sin\left(x_0\right)\sin\left(h\right) - \cos\left(x_0\right)}{h}  \\
-        = & \lim_{h \to 0} \left(\cos\left(x_0\right) \underbrace{\frac{\cos\left(h\right) - 1}{h}}_{\to 0} - \sin\left(x_0\right) \underbrace{\frac{\sin\left(h\right)}{h}}_{\to 1}\right)  \\
-        = & -\sin\left(x\right)
+            & \lim_{h \to 0} \frac{\cos\left(x_0 + h\right) - \cos\left(x_0\right)}{h} \\
+            = & \lim_{h \to 0} \frac{\cos\left(x_0\right)\cos\left(h\right) - \sin\left(x_0\right)\sin\left(h\right) - \cos\left(x_0\right)}{h}  \\
+            = & \lim_{h \to 0} \left(\cos\left(x_0\right) \underbrace{\frac{\cos\left(h\right) - 1}{h}}_{\to 0} - \sin\left(x_0\right) \underbrace{\frac{\sin\left(h\right)}{h}}_{\to 1}\right)  \\
+            = & -\sin\left(x\right)
         \end{multiequality}
 
     }
@@ -146,22 +114,22 @@
 
     On définit la \important{fonction dérivée}:
     \[\begin{split}
-        f': D\left(f'\right) &\longmapsto \mathbb{R} \\
-        x &\longmapsto f'\left(x\right)
-    \end{split}\]
+            f': D\left(f'\right) &\longmapsto \mathbb{R} \\
+            x &\longmapsto f'\left(x\right)
+        \end{split}\]
 }
 
 \parag{Exemple}{
     Voici les fonctions dérivées qu'on connait:
     \begin{center}
-    \begin{tabular}{c|c}
-        $f\left(x\right)$ & $f'\left(x\right)$ \\
-        \hline
-        $\cos\left(x\right)$ & $-\sin\left(x\right)$ \\
-        $\sin\left(x\right)$ & $\cos\left(x\right)$  \\
-        $x^2$ & $2x$ \\
-        $x^3$ & $3x^2$
-    \end{tabular}
+        \begin{tabular}{c|c}
+            $f\left(x\right)$    & $f'\left(x\right)$    \\
+            \hline
+            $\cos\left(x\right)$ & $-\sin\left(x\right)$ \\
+            $\sin\left(x\right)$ & $\cos\left(x\right)$  \\
+            $x^2$                & $2x$                  \\
+            $x^3$                & $3x^2$
+        \end{tabular}
     \end{center}
 }
 
@@ -175,13 +143,13 @@
 }
 
 \parag{Définition des dérivées sur le côté}{
-    La \important{dérivée à droite} est définie par:
-    \[f'_d\left(x_0\right) \over{=}{déf}  \lim_{x \to x_0^+} \frac{f\left(x\right) - f\left(x_0\right)}{x - x_0}\]
+La \important{dérivée à droite} est définie par:
+\[f'_d\left(x_0\right) \over{=}{déf}  \lim_{x \to x_0^+} \frac{f\left(x\right) - f\left(x_0\right)}{x - x_0}\]
 
-    De la même manière, la \important{dérivée à gauche} est définie par:
-    \[f'_{{\color{red}g}}\left(x_0\right) \over{=}{déf} \lim_{{\color{red}x \to x_0^-}} \frac{f\left(x\right) - f\left(x_0\right)}{x - x_0} \]
+De la même manière, la \important{dérivée à gauche} est définie par:
+\[f'_{{\color{red}g}}\left(x_0\right) \over{=}{déf} \lim_{{\color{red}x \to x_0^-}} \frac{f\left(x\right) - f\left(x_0\right)}{x - x_0} \]
 
-    On remarque que $f'\left(x_0\right)$ existe si et seulement s'il existe $f'_d\left(x_0\right)$ et $f'_g\left(x_0\right)$, et que $f'_d\left(x_0\right) = f'_g\left(x_0\right)$
+On remarque que $f'\left(x_0\right)$ existe si et seulement s'il existe $f'_d\left(x_0\right)$ et $f'_g\left(x_0\right)$, et que $f'_d\left(x_0\right) = f'_g\left(x_0\right)$
 }
 
 \parag{Proposition}{
@@ -190,9 +158,9 @@
     \subparag{Preuve}{
         On voit que:
         \begin{multiequality}
-        \lim_{x \to x_0} f\left(x\right) & = \lim_{x \to x_0} \left(f\left(x_0\right) + f\left(x\right) - f\left(x_0\right)\right)  \\
-        & = \lim_{x \to x_0} \left(f\left(x_0\right) + \underbrace{\frac{f\left(x\right) - f\left(x_0\right)}{x - x_0}}_{\to f'\left(x_0\right)}\underbrace{\left(x - x_0\right)}_{\to 0}\right)  \\
-        & = f\left(x_0\right)
+            \lim_{x \to x_0} f\left(x\right) & = \lim_{x \to x_0} \left(f\left(x_0\right) + f\left(x\right) - f\left(x_0\right)\right)  \\
+            & = \lim_{x \to x_0} \left(f\left(x_0\right) + \underbrace{\frac{f\left(x\right) - f\left(x_0\right)}{x - x_0}}_{\to f'\left(x_0\right)}\underbrace{\left(x - x_0\right)}_{\to 0}\right)  \\
+            & = f\left(x_0\right)
         \end{multiequality}
 
         Pour calculer cette limite, on utilise que $f$ est dérivable en $x_0$.
@@ -232,8 +200,8 @@
 \parag{Exemple}{
     Prenons la fonction suivante:
     \begin{functionbypart}{f\left(x\right)}
-    \sqrt[3]{x}, \mathspace x \geq 0 \\
-    -\sqrt[3]{\left|x\right|}, \mathspace x < 0
+        \sqrt[3]{x}, \mathspace x \geq 0 \\
+        -\sqrt[3]{\left|x\right|}, \mathspace x < 0
     \end{functionbypart}
 
     On a besoin de définir notre fonction comme ça car on a uniquement défini les racines $n$-èmes pour les $x$ positifs. Calculons les dérivées sur le côté:
@@ -261,10 +229,10 @@
 
         On a:
         \begin{multiequality}
-        \left(\frac{1}{g}\right)'\left(x_0\right) & = \lim_{x \to x_0} \frac{\frac{1}{g\left(x\right)} - \frac{1}{g\left(x_0\right)}}{x - x_0}  \\
-        & = \lim_{x \to x_0} \frac{g\left(x_0\right) - g\left(x\right)}{g\left(x\right)g\left(x_0\right)\left(x - x_0\right)}  \\
-        & = \lim_{x \to x_0} \underbrace{\frac{g\left(x_0\right) - g\left(x\right)}{x - x_0}}_{\to -g'\left(x_0\right)} \cdot \underbrace{\frac{1}{g\left(x\right)g\left(x_0\right)}}_{\to \frac{1}{g^2\left(x_0\right)}}  \\
-        & = - \frac{g'\left(x_0\right)}{g^2\left(x_0\right)}
+            \left(\frac{1}{g}\right)'\left(x_0\right) & = \lim_{x \to x_0} \frac{\frac{1}{g\left(x\right)} - \frac{1}{g\left(x_0\right)}}{x - x_0}  \\
+            & = \lim_{x \to x_0} \frac{g\left(x_0\right) - g\left(x\right)}{g\left(x\right)g\left(x_0\right)\left(x - x_0\right)}  \\
+            & = \lim_{x \to x_0} \underbrace{\frac{g\left(x_0\right) - g\left(x\right)}{x - x_0}}_{\to -g'\left(x_0\right)} \cdot \underbrace{\frac{1}{g\left(x\right)g\left(x_0\right)}}_{\to \frac{1}{g^2\left(x_0\right)}}  \\
+            & = - \frac{g'\left(x_0\right)}{g^2\left(x_0\right)}
         \end{multiequality}
 
         On utilise que $g$ est dérivable et que $g$ est continue.
@@ -287,25 +255,25 @@
 }
 
 \parag{Proposition}{
-    Soit $f\left(x\right) = x^{n}$, où $n \in \mathbb{N}^*$. On a:
-    \[\left(x^{n}\right)' = nx^{n - 1}, \mathspace \forall x \in \mathbb{R}\]
+Soit $f\left(x\right) = x^{n}$, où $n \in \mathbb{N}^*$. On a:
+\[\left(x^{n}\right)' = nx^{n - 1}, \mathspace \forall x \in \mathbb{R}\]
 
-    \subparag{Preuve}{
-        On va démontrer ce fait par récurrence.
+\subparag{Preuve}{
+On va démontrer ce fait par récurrence.
 
-        \important{Initialisation:} Prenons $n = 1$. Alors:
-        \[\left(x\right)' = \lim_{x \to x_0} \frac{x - x_0}{x - x_0} = 1 \implies \left(x\right)' = 1 \mathspace \forall x \in \mathbb{R}\]
+\important{Initialisation:} Prenons $n = 1$. Alors:
+\[\left(x\right)' = \lim_{x \to x_0} \frac{x - x_0}{x - x_0} = 1 \implies \left(x\right)' = 1 \mathspace \forall x \in \mathbb{R}\]
 
-        \important{Hérédité:} Supposons que $\left(x^n\right)' = nx^{n-1}$ pour un $n \in \mathbb{N}^*$. On veut montrer que $\left(x^{n+1}\right)' = \left(n+1\right)x^n$:
-        \[\left(x^{n+1}\right)' = \left(x^n \cdot x\right)' = \left(x^n\right)' x + x^n \left(x\right)' = nx^{n-1} x + x^{n}\cdot 1\]
+\important{Hérédité:} Supposons que $\left(x^n\right)' = nx^{n-1}$ pour un $n \in \mathbb{N}^*$. On veut montrer que $\left(x^{n+1}\right)' = \left(n+1\right)x^n$:
+\[\left(x^{n+1}\right)' = \left(x^n \cdot x\right)' = \left(x^n\right)' x + x^n \left(x\right)' = nx^{n-1} x + x^{n}\cdot 1\]
 
-        On peut donc en déduire que:
-        \[\left(x^{n+1}\right)' = nx^{n} + x^n = \left(n+1\right)x^{n}\]
+On peut donc en déduire que:
+\[\left(x^{n+1}\right)' = nx^{n} + x^n = \left(n+1\right)x^{n}\]
 
-        Ainsi, par récurrence, la proposition $\left(x^n\right)' = nx^{n-1}$ est vraie pour tout $n \in \mathbb{N}^*$.
+Ainsi, par récurrence, la proposition $\left(x^n\right)' = nx^{n-1}$ est vraie pour tout $n \in \mathbb{N}^*$.
 
-        \qed
-    }
+\qed
+}
 }
 
 \parag{Proposition (dérivée de la fonction composée de deux fonctions dérivables)}{

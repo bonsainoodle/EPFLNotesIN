@@ -13,9 +13,9 @@ COURSE_NAMES_FORMATTED = {
     "Analyse-1": "Analyse I",
 }
 COURSE_PROGRESS = {
-    "AlgebreLineaire": 25,
+    "AlgebreLineaire": 27,
     "AICC-1": 27,
-    "Analyse-1": 24,
+    "Analyse-1": 26,
 }
 
 

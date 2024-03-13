@@ -1,4 +1,4 @@
-\usepackage[british]{babel}
+\RequirePackage[british]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[bottom=2.5cm, top=2.5cm, left=2.5cm, right=2.5cm]{geometry}
@@ -17,7 +17,7 @@
 \usepackage{bm}
 \usepackage{tabularx}
 
-\usepackage[nointegrals]{wasysym}
+\usepackage{wasysym}
 \usepackage{siunitx}
 \sisetup{parse-numbers = false}
 \sisetup{per-mode = symbol}
@@ -43,14 +43,6 @@
 \usepackage[super]{nth}  % for the \nth command
 \usepackage{centernot}  % for \centernot command
 \usepackage{hhline}  % Soruce : https://tex.stackexchange.com/a/373342/252510
-\usepackage{svg}  % For \includesvg command (needs -shell-escape when compiling and inkscape)
-\usepackage{dsfont} % for \mathds{1}
-\usepackage{diagbox} % for \diagbox command, for tables
-
-\usepackage{pgfplots}
-%\pgfplotsset{width=10cm, height=10cm, compat=1.8}
-%\usepgfplotslibrary{external}
-%\tikzexternalize
 
 % \usepackage[Glenn]{fncychap}
 
@@ -73,7 +65,6 @@
 \raggedbottom  % source: https://tex.stackexchange.com/a/65356
 
 \definecolor{maincolour}{HTML}{004A7F}
-\definecolor{fullpurple}{HTML}{FF00FF}
 
 \setcounter{tocdepth}{3}  % set to 4 to show parags in table of content
 \setlength{\parindent}{0pt}
@@ -137,11 +128,11 @@
 
 \lstdefinelanguage{pseudo}{
     morekeywords = {procedure, return, define, function,
-                    array, integer, integers, real, number, numbers,
-                    and, or,
-                    select, let,
-                    while, for, in, to, is,
-                    if, then, else},
+            array, integer, integers, real, number, numbers,
+            and, or,
+            select, let,
+            while, for, in, to, is,
+            if, then, else},
     morecomment=[l]{//}
 }
 
@@ -149,8 +140,8 @@
 
 \newcommand{\importcode}[2]{
 
-\needspace{2em}
-\lstinputlisting[language=#2]{#1}
+    \needspace{2em}
+    \lstinputlisting[language=#2]{#1}
 }
 
 %\pagecolor[rgb]{0,0,0}
@@ -167,41 +158,35 @@
 \newcommand{\eval}{\Big|}
 \newcommand{\bvec}[1]{\bm{\protect\overrightarrow{#1}}}
 \newcommand{\bhat}[1]{\bm{\hat{#1}}}  % could use widehat, but is strange
-\newcommand{\bcheck}[1]{\bm{\check{#1}}}
 \newcommand{\degree}{^\circ}
 \newcommand{\telque}{\text{ tel que }}
 \newcommand{\contradiction}{\text{\lightning}}
 \newcommand{\imagehere}[2][1]{\begin{center}\includegraphics[width=#1\textwidth]{#2}\end{center}}
-\newcommand{\svghere}[2][1]{\begin{center}\includesvg[width=#1\textwidth]{#2}\end{center}}
-\newcommand{\svgherenolatex}[2][1]{\begin{center}\includesvg[inkscapelatex=false, width=#1\textwidth]{#2}\end{center}}
 \newcommand{\pdfhere}[1]{{\centering\includegraphics{#1}}}
 
 % Source: https://latex.org/forum/viewtopic.php?t=10866
 \newcommand{\fullbf}[1]{{\boldmath\textbf{#1}}}
 \newcommand{\important}[1]{\textcolor{maincolour}{\fullbf{#1}}}
 \newcommand{\question}[1]{
-  \textcolor{red}{\fullbf{#1}}
-  \phantomsection
-  \addcontentsline{questions}{chapter}{p.\thepage : #1}
+    \textcolor{red}{\fullbf{#1}}
+    \phantomsection
+    \addcontentsline{questions}{chapter}{p.\thepage : #1}
 }
-\newcommand{\demonstrationaconnaitre}{\vspace{1em}\begin{center}\textcolor{red}{\fullbf{La démonstration de ce théorème doit être connue pour l'examen.}}\end{center}\vspace{1em}}
-\newcommand{\later}[1]{\textcolor{orange}{\fullbf{[#1]}}}
 \newcommand{\dotprod}{\bullet}
 
 \newcommand{\qed}{
-\begin{flushright} $\square$ \end{flushright}
+    \begin{flushright} $\square$ \end{flushright}
 
 }
 \newcommand{\clearemptydoublepage}{
-  \clearpage\
-  {\pagestyle{empty}\cleardoublepage}
+\clearpage\
+{\pagestyle{empty}\cleardoublepage}
 } % Source: https://latexref.xyz/_005cclearpage-_0026-_005ccleardoublepage.html
 \newcommand{\Th}{\textsuperscript{th}\ }  % th and TH already defined
 \newcommand{\matricepassage}[2]{\mathop{P}_{\mathcal{#1} \leftarrow \mathcal{#2}}}
 \newcommand{\wink}{;)}
 \newcommand{\divides}{\mid}
 \newcommand{\ndivides}{\centernot\divides}
-\newcommand{\exval}{\mathbb{E}}
 
 \let\originalbar\bar
 \renewcommand{\bar}{\overline}
@@ -215,8 +200,6 @@
 \let\originalo\o
 \renewcommand{\o}{\text{\originalo}}
 
-\newcommand{\hex}[1]{\text{0x#1}}
-
 
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\vect}{vect}
@@ -224,7 +207,6 @@
 \DeclareMathOperator{\rang}{rang}
 \DeclareMathOperator{\lgn}{Lgn}
 \DeclareMathOperator{\ligne}{ligne}
-\DeclareMathOperator{\rank}{rank}
 
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\proj}{proj}
@@ -235,9 +217,6 @@
 
 \DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\Mod}{mod}
-
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\rot}{rot}
 
 % Source: https://tex.stackexchange.com/a/97246
 \DeclareMathOperator{\tg}{tg}
@@ -268,11 +247,6 @@
 \DeclareMathOperator{\Argsh}{argsh}
 \DeclareMathOperator{\Taylor}{Taylor}
 \DeclareMathOperator{\MacLaurin}{MacLaurin}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Hess}{Hess}
-\DeclareMathOperator{\Tr}{Tr}
-
-\DeclareMathOperator{\sgn}{sgn}
 
 \newcommand{\congruent}[3]{#1 \equiv #2\ (\Mod #3)}
 \newcommand{\notcongruent}[3]{#1 \not\equiv #2\ (\Mod #3)}
@@ -293,7 +267,7 @@
 \NewEnviron{multiequality}{\begin{equation*}\begin{split} \BODY \end{split}\end{equation*}}
 \NewEnviron{multiequation}{\begin{equation*}\begin{split} \BODY \end{split}\end{equation*}}
 
-\NewEnviron{systemofequations}{\begin{cases} \BODY \end{cases}}
+\NewEnviron{systemofequations}[1]{\begin{subequations}\label{#1}\begin{empheq}[left=\empheqlbrace]{align} \BODY \end{empheq}\end{subequations}}
 \NewEnviron{functionbypart}[1]{\begin{equation*}#1 = \begin{dcases} \BODY \end{dcases}\end{equation*}}
 
 \newcommand{\multicolumnX}[2]{\multicolumn{#1}{>{\hsize=\dimexpr#1\hsize+#1\tabcolsep+\arrayrulewidth\relax}X}{#2}}
@@ -308,8 +282,8 @@
 \newlength\paragheight
 \newlength\subparagheight
 \newcommand{\twosimultaneously}[5]{ % size left, space middle, size left, content left, content right
-% Inspired (stolen) from https://tex.stackexchange.com/a/271436/252510
-% The right content can span over multiple pages
+    % Inspired (stolen) from https://tex.stackexchange.com/a/271436/252510
+    % The right content can span over multiple pages
     \sbox\titlebox{
         \begin{minipage}[c]{#1}\vspace{0pt}
             #4
@@ -324,20 +298,20 @@
     \setlength\contentheight{\ht\contentbox}
     \setlength\neededspace{\titleheight - \contentheight}
     \begin{tcolorbox}[
-      blanker,
-      width=#3,enlarge left by=(#1 + #2),
-      before skip=6pt,
-      breakable,
-      overlay unbroken and first={%
-        \node[inner sep=0pt,outer sep=0pt,text width=#1,
-          align=none,
-          below right]
-          at ([xshift=-(#1 + #2)]frame.north west)
-      {%
-        #4
-      };}]
-    #5
-    \ifthenelse{\titleheight > \contentheight}{\vspace{2\neededspace}}{}  % Why 2? That's actually quite a good question, but it works perfectly.
+            blanker,
+            width=#3,enlarge left by=(#1 + #2),
+            before skip=6pt,
+            breakable,
+            overlay unbroken and first={%
+                    \node[inner sep=0pt,outer sep=0pt,text width=#1,
+                        align=none,
+                        below right]
+                    at ([xshift=-(#1 + #2)]frame.north west)
+                    {%
+                            #4
+                        };}]
+        #5
+        \ifthenelse{\titleheight > \contentheight}{\vspace{2\neededspace}}{}  % Why 2? That's actually quite a good question, but it works perfectly.
     \end{tcolorbox}
 }
 
@@ -350,25 +324,25 @@
 
 % Inspired from https://tex.stackexchange.com/a/86389/252510
 \newmdenv[
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  skipabove=0pt,
-  skipbelow=0pt
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    skipabove=0pt,
+    skipbelow=0pt
 ]{lineleft}
 
 
 \newcommand{\subparag}[2]{
     \begin{minipage}[t]{\textwidth}
-       \begin{lineleft}
-           \begin{minipage}[t]{2cm}\vspace{0pt}
+        \begin{lineleft}
+            \begin{minipage}[t]{2cm}\vspace{0pt}
                 \RaggedRight\textit{\footnotesize #1}
-           \end{minipage}
-           \hfill
-           \begin{minipage}[t]{\textwidth - 2.5cm}\vspace{0pt}
-               #2
-           \end{minipage}
-       \end{lineleft}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{\textwidth - 2.5cm}\vspace{0pt}
+                #2
+            \end{minipage}
+        \end{lineleft}
     \end{minipage}
     \vspace{\parskip}%
 }
@@ -403,8 +377,8 @@
 
 % inspired from https://tex.stackexchange.com/a/242086
 \newtcolorbox{tcbsiderules}[1][]{blanker, breakable,
-     left=0pt, right=0pt, top=0pt, bottom=\parskip,
-     borderline west={0.1mm}{-2.5cm}{black}, parbox=false, #1}
+    left=0pt, right=0pt, top=0pt, bottom=\parskip,
+    borderline vertical={0.1mm}{-2.5cm}{black}, parbox=false, #1}
 
 \setlength{\TPHorizModule}{1cm}
 \newcommand{\paragsubparag}[3]{
@@ -452,21 +426,21 @@
 % For the capital letter (it's a bad way to do it, but it's the only way I found)
 % DTMWeekdayname should work, but it does not in French
 \def\DTMfrenchweekdayname#1{%
-  \ifcase#1
-  Lundi%
-  \or
-  Mardi%
-  \or
-  Mercredi%
-  \or
-  Jeudi%
-  \or
-  Vendredi%
-  \or
-  Samedi
-  \or
-  Dimanche%
-  \fi
+    \ifcase#1
+        Lundi%
+    \or
+        Mardi%
+    \or
+        Mercredi%
+    \or
+        Jeudi%
+    \or
+        Vendredi%
+    \or
+        Samedi
+    \or
+        Dimanche%
+    \fi
 }
 
 \DTMlangsetup[en-GB]{ord=raise}
@@ -488,32 +462,32 @@
 }
 
 \newcommand{\lecturetitlesummary}[3]{  % #1: lecture no, #2: date, #3: title
-\needspace{5em}
-\DTMsavedate{lectureDate}{#2}
-\def\lecturename{\fullbf{\ifx\bbl@loaded\french Cours \else Lecture \fi #1 \ifx\emptyvariable#3\else: #3\fi}}
-\def\datename{\DTMusedate{lectureDate}}
+    \needspace{5em}
+    \DTMsavedate{lectureDate}{#2}
+    \def\lecturename{\fullbf{\ifx\bbl@loaded\french Cours \else Lecture \fi #1 \ifx\emptyvariable#3\else: #3\fi}}
+    \def\datename{\DTMusedate{lectureDate}}
 
-\hyperref[lecture#1]{\textcolor{maincolour}{\lecturename\ ---\ \datename\ \hrulefill\ \textit{p. \pageref{lecture#1}}}}
+    \hyperref[lecture#1]{\textcolor{maincolour}{\lecturename\ ---\ \datename\ \hrulefill\ \textit{p. \pageref{lecture#1}}}}
 
-\phantomsection
-\label{lecturesummary#1}
+    \phantomsection
+    \label{lecturesummary#1}
 
 }
 
 \newcommand\listoflectures{%
-  \def\french{french}
-  \def\listoflecturestitle{\ifx\bbl@loaded\french Liste des cours \else List of lectures \fi}
-  \let\oldleftmark\leftmark
-  \def\leftmark{\expandafter\MakeUppercase\expandafter{\listoflecturestitle}}
-  \chapter*{\listoflecturestitle}\@starttoc{lectures}
-  \cleardoublepage
-  \def\leftmark{\oldleftmark}
+    \def\french{french}
+    \def\listoflecturestitle{\ifx\bbl@loaded\french Liste des cours \else List of lectures \fi}
+    \let\oldleftmark\leftmark
+    \def\leftmark{\expandafter\MakeUppercase\expandafter{\listoflecturestitle}}
+    \chapter*{\listoflecturestitle}\@starttoc{lectures}
+    \cleardoublepage
+    \def\leftmark{\oldleftmark}
 }
 
 \newcommand{\invinsiblelistofquestions}{  % Want to get the file.questions file for the program, but not the list in the document
-\begin{textblock}{10}(-20, -20)\vspace{0pt}
-  \@starttoc{questions}
-\end{textblock}
+    \begin{textblock}{10}(-20, -20)\vspace{0pt}
+        \@starttoc{questions}
+    \end{textblock}
 }
 
 \def\currentpdf{None}
@@ -542,16 +516,16 @@
             \BODY \hphantom{a}
         \end{minipage}
     }{
-    \centering
-    \begin{minipage}[t]{\textwidth}
-        \begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
-            \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
+        \centering
+        \begin{minipage}[t]{\textwidth}
+            \begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
+                \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
+                \BODY \hphantom{a}
+            \end{minipage}
         \end{minipage}
-        \hfill
-        \begin{minipage}[t]{0.48\textwidth}\vspace{0pt}
-            \BODY \hphantom{a}
-        \end{minipage}
-    \end{minipage}
     }
     \stepcounter{CurrentSlide}
     %\vspace{-1em}
@@ -566,20 +540,20 @@
     \setbox0=\hbox{\begin{minipage}[c]{0.48\textwidth}I need text here, let's call that an easter egg.\end{minipage}}
     \height=\ht0 \advance\height by \dp0
     %
-  \centering
-  \begin{minipage}[c]{0.48\textwidth}
-      \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
-  \end{minipage}
-  \stepcounter{CurrentSlide}
-  \hfill
-  \begin{minipage}[c][\slideheight]{0.48\textwidth}
-      \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
-  \end{minipage}
-  \stepcounter{CurrentSlide}
+    \centering
+    \begin{minipage}[c]{0.48\textwidth}
+        \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
+    \end{minipage}
+    \stepcounter{CurrentSlide}
+    \hfill
+    \begin{minipage}[c][\slideheight]{0.48\textwidth}
+        \frame{\includegraphics[width=\textwidth, page=\theCurrentSlide]{\currentpdf}}
+    \end{minipage}
+    \stepcounter{CurrentSlide}
 }
 
 \newcommand{\skipslide}{
 
-  \stepcounter{CurrentSlide}
+    \stepcounter{CurrentSlide}
 
 }

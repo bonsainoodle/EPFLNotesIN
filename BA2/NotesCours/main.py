@@ -3,20 +3,14 @@ import tempfile
 import shutil
 
 COURSE_NAMES = [
-    "AlgebreLineaire",
-    "AICC-1",
-    "Analyse-1",
+    "AICC-2",
+    "Analyse-2",
 ]
 COURSE_NAMES_FORMATTED = {
     "AICC-2": "Advanced information, computation, communication II",
     "Analyse-2": "Analyse II",
-    "Analyse-2-MethodesDeDemonstration": "Analyse II - M'{e}thodes de d'{e}monstration",
 }
-COURSE_PROGRESS = {
-    "AICC-2": 2,
-    "Analyse-2": 2,
-    "Analyse-2-MethodesDeDemonstration": 2,
-}
+COURSE_PROGRESS = {"AICC-1": 2, "Analyse-1": 2}
 
 
 def create_combined_latex(course_name="."):

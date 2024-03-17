@@ -267,8 +267,9 @@
 \NewEnviron{multiequality}{\begin{equation*}\begin{split} \BODY \end{split}\end{equation*}}
 \NewEnviron{multiequation}{\begin{equation*}\begin{split} \BODY \end{split}\end{equation*}}
 
-\NewEnviron{systemofequations}[1]{\begin{subequations}\label{#1}\begin{empheq}[left=\empheqlbrace]{align} \BODY \end{empheq}\end{subequations}}
+\NewEnviron{systemofequations}{\begin{cases} \BODY \end{cases}}
 \NewEnviron{functionbypart}[1]{\begin{equation*}#1 = \begin{dcases} \BODY \end{dcases}\end{equation*}}
+\newcommand{\piecewisefunc}[4]{\unexpanded{\begin{systemofequations} #1, & #2 \\ #3, & #4 \end{systemofequations}}}
 
 \newcommand{\multicolumnX}[2]{\multicolumn{#1}{>{\hsize=\dimexpr#1\hsize+#1\tabcolsep+\arrayrulewidth\relax}X}{#2}}
 

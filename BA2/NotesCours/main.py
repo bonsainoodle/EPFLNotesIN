@@ -2,15 +2,13 @@ import os
 import tempfile
 import shutil
 
-COURSE_NAMES = [
-    "AICC-2",
-    "Analyse-2",
-]
+COURSE_NAMES = ["AICC-2", "Analyse-2", "Analyse-2-MethodesDeDemonstration"]
 COURSE_NAMES_FORMATTED = {
     "AICC-2": "Advanced information, computation, communication II",
     "Analyse-2": "Analyse II",
+    "Analyse-2-MethodesDeDemonstration": "Analyse II - M'{e}thodes de d'{e}monstration",
 }
-COURSE_PROGRESS = {"AICC-1": 2, "Analyse-1": 2}
+COURSE_PROGRESS = {"AICC-2": 0, "Analyse-2": 0, "Analyse-2-MethodesDeDemonstration": 2}
 
 
 def create_combined_latex(course_name="."):
@@ -37,7 +35,7 @@ def create_combined_latex(course_name="."):
 
                 \title{%s \\[1em] \large R\'{e}sum\'{e} des notes de Joachim Favre}
                 \author{Tom Massias Jurien de la Gravi\`{e}re}
-                \date{Semestre d'automne 2023}
+                \date{Semestre de printemps 2023}
 
                 \begin{document}
                 \maketitle

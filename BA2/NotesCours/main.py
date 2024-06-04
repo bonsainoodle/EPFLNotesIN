@@ -8,7 +8,11 @@ COURSE_NAMES_FORMATTED = {
     "Analyse-2": "Analyse II",
     "Analyse-2-MethodesDeDemonstration": "Analyse II - M'{e}thodes de d'{e}monstration",
 }
-COURSE_PROGRESS = {"AICC-2": 0, "Analyse-2": 0, "Analyse-2-MethodesDeDemonstration": 2}
+COURSE_PROGRESS = {
+    "AICC-2": 26,
+    "Analyse-2": 27,
+    "Analyse-2-MethodesDeDemonstration": 2,
+}
 
 
 def create_combined_latex(course_name="."):
